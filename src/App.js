@@ -22,11 +22,8 @@ const App = () => {
                   element={<Home/>}></Route>
           <Route path='login' element={<LoginForm/>}></Route>
           <Route path='register' element={<RegisterForm/>}></Route>
-          <Route path='cursos' element={<Cursos/>}></Route>
-          <Route path='biologia' element={<Biologia/>}></Route>
-          <Route path='bprocesos' element={<BProcesos/>}></Route>
-          <Route path='estadisticas' element={<Estadisticas/>}></Route>
-          <Route path='descarga' element={<Link to="https://www.google.com"/>}></Route>
+          {/* <Route path='cursos' element={<Cursos/>}></Route>
+          <Route path='descarga' element={<Link to="https://www.google.com"/>}></Route> */}
         </Route>
       </Routes>
     </BrowserRouter>

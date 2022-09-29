@@ -1,0 +1,21 @@
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.descargar {
+    color: white;
+    line-height: 40px;
+}
+
+a:hover {
+    color: white;
+}
+
+.btn-logout {
+    color: white;
+}
+
+.navbar-brand a img {
+    height: 3rem;
+}

@@ -3,18 +3,18 @@ import { useNavigate } from 'react-router-dom'
 import './Home.css'
 
 const Home = () => {
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
 
-  const goLogin = () => {
-    navigate('/login', {replace: true})
-  }
+//   const goLogin = () => {
+//     navigate('/login', {replace: true})
+//   }
 
-  const goRegister = () => {
-    navigate('/register', {replace: true})
-  }
+//   const goRegister = () => {
+//     navigate('/register', {replace: true})
+//   }
 
   return (
-    <div className="container">
+    <div>
         hola
     </div>
   )

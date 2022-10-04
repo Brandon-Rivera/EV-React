@@ -1,6 +1,6 @@
 import React from 'react';
 // import { NavLink } from 'react-router-dom';
-import {Nav, Bars, NavMenu, NavLink, NavBtn, NavBtnLink} from './NavbarElements';
+import {Nav, Bars, NavMenu, NavLink, NavBtnLink} from './NavbarElements';
 
 const Navbar = () => {
   return (
@@ -24,10 +24,8 @@ const Navbar = () => {
                 <NavLink to="/cerrar-sesion" activeStyle>
                     Cerrar sesión
                 </NavLink>
-            </NavMenu>
-            <NavBtn>
                 <NavBtnLink to="/iniciar-sesion">Iniciar sesión</NavBtnLink>
-            </NavBtn>
+            </NavMenu>
         </Nav>
     </>
   );

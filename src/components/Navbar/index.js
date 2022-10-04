@@ -7,26 +7,26 @@ const Navbar = () => {
     <>
         <Nav>
             <NavLink to="/">
-                <h1>Logo</h1>
-                {/* <img src="" alt=""/> */}
+                <img src="assets/BAMX.png" alt="" width="60px" height="60px"/>
+                <h1>&nbsp;BAMX</h1>
             </NavLink>
             <Bars/>
             <NavMenu>
-                <NavLink to="/about" activeStyle>
+                <NavLink to="/informe-general" activeStyle>
                     Informe General
                 </NavLink>
-                <NavLink to="/services" activeStyle>
+                <NavLink to="/insumos" activeStyle>
                     Insumos
                 </NavLink>
-                <NavLink to="/contact-us" activeStyle>
+                <NavLink to="/reporte-detallado" activeStyle>
                     Reporte Detallado
                 </NavLink>
-                <NavLink to="/sign-up" activeStyle>
+                <NavLink to="/cerrar-sesion" activeStyle>
                     Cerrar sesión
                 </NavLink>
             </NavMenu>
             <NavBtn>
-                <NavBtnLink to="/signin">Iniciar sesión</NavBtnLink>
+                <NavBtnLink to="/iniciar-sesion">Iniciar sesión</NavBtnLink>
             </NavBtn>
         </Nav>
     </>

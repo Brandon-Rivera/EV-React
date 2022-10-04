@@ -1,11 +1,11 @@
 import React from 'react'
 
-const About = () => {
+const Inicio = () => {
   return (
     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height:'90vh'}}>
-        <h1>About</h1>
+        <h1>Iniciar sesión</h1>
     </div>
   )
 }
 
-export default About
+export default Inicio

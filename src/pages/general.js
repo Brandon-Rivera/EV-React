@@ -10,10 +10,11 @@ const General = () => {
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>Beneficiario</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Integrantes</th>
+          <th>Folio</th>
         </tr>
       </thead>
       <tbody>
@@ -22,12 +23,14 @@ const General = () => {
           <td>Mark</td>
           <td>Otto</td>
           <td>@mdo</td>
+          <td>1234</td>
         </tr>
         <tr>
           <td>2</td>
           <td>Jacob</td>
           <td>Thornton</td>
           <td>@fat</td>
+          <td>1234</td>
         </tr>
       </tbody>
     </Table>

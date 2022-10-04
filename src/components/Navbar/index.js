@@ -7,7 +7,8 @@ const Navbar = () => {
     <>
         <Nav>
             <NavLink to="/">
-                <img src="" alt=""/>
+                <h1>Logo</h1>
+                {/* <img src="" alt=""/> */}
             </NavLink>
             <Bars/>
             <NavMenu>

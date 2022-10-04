@@ -2,3 +2,25 @@ body {
     background-image: url('../../public/assets/Background.png');
 }
 
+.center-home {
+    color: white;
+    background-color: #7c1a19;
+    border: 15px solid white;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.button {
+    background-color: #009639;
+    border: 5px solid white;
+    border-radius: 25px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+

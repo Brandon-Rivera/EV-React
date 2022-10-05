@@ -1,0 +1,36 @@
+.title{
+    background-color: white;
+    /* width: fit-content; */
+    text-align: center;
+    flex: 1;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border: "solid 1px black";
+    display: "block";
+    height: "150px";
+    overflow: auto;
+}
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr {
+    background-color: #dddddd;
+}
+
+th {
+    color: white; 
+    position: "sticky";
+    top: 0;
+    background-color: black;
+}
+
+td {
+    min-width: "300px";
+}

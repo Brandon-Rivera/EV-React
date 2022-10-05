@@ -21,8 +21,8 @@ const Navbar = () => {
                 <NavLink to="/reporte-detallado" activeStyle>
                     Reporte Detallado
                 </NavLink>
-                <NavLink to="/cerrar-sesion" activeStyle>
-                    Cerrar sesión
+                <NavLink to="/registrar-sesion" activeStyle>
+                    Registrar sesión
                 </NavLink>
                 <NavBtnLink to="/iniciar-sesion">Iniciar sesión</NavBtnLink>
             </NavMenu>

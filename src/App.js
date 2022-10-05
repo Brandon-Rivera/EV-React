@@ -6,7 +6,7 @@ import Home from './pages';
 import General from './pages/general';
 import Insumos from './pages/insumos';
 import Detallado from './pages/detallado';
-import Cerrar from './pages/cierreSesion';
+import Registro from './pages/registroSesion';
 import Inicio from './pages/inicioSesion';
 
 
@@ -20,7 +20,7 @@ function App() {
         <Route path="/informe-general" element={<General/>}></Route>
         <Route path="/insumos" element={<Insumos/>}></Route>
         <Route path="/reporte-detallado" element={<Detallado/>}></Route>
-        <Route path="/cerrar-sesion" element={<Cerrar/>}></Route>
+        <Route path="/registrar-sesion" element={<Registro/>}></Route>
         <Route path="/iniciar-sesion" element={<Inicio/>}></Route>
       </Routes>
     </Router>

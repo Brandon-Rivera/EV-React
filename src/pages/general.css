@@ -1,8 +1,9 @@
 .title{
     background-color: white;
-    /* width: fit-content; */
     text-align: center;
-    flex: 1;
+    margin-top: 50px;
+    margin-right: 460px;
+    margin-left: 460px;
 }
 
 table {

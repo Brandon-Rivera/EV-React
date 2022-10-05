@@ -1,24 +1,25 @@
 .title{
     background-color: white;
-    /* width: fit-content; */
     text-align: center;
-    flex: 1;
+    margin-top: 50px;
+    margin-right: 370px;
+    margin-left: 370px;
 }
 
-table {
+Table {
     margin-left: auto;
     margin-right: auto;
     border: "solid 1px black";
     display: "block";
     height: "150px";
-    overflow: auto;
+    overflow-x: auto;
 }
   
-td, th {
+/* td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-}
+} */
 
 tr {
     background-color: #dddddd;
@@ -34,3 +35,4 @@ th {
 td {
     min-width: "300px";
 }
+

@@ -7,6 +7,7 @@ const Insumos = () => {
     <div style={{justifyContent: 'center', alignItems: 'center', height:'150vh'}}>
     <h1 className='title'>Insumos</h1>
     <br></br>
+
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -26,8 +27,8 @@ const Insumos = () => {
           <td>7771247893</td>
           <td>4</td>
           <td>00070531</td>
-          <td>imagen</td>
-          <td>imagen</td>
+          <td><img src="assets/Plato.png" alt="" width="60px" height="60px"/></td>
+          <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
         </tr>
         <tr>
           <td>Familia Rivera</td>
@@ -35,8 +36,8 @@ const Insumos = () => {
           <td>7772680483</td>
           <td>5</td>
           <td>00070598</td>
-          <td>imagen</td>
-          <td>imagen</td>
+          <td><img src="assets/Plato.png" alt="" width="60px" height="60px"/></td>
+          <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
         </tr>
         <tr>
           <td>Familia Sierra</td>
@@ -44,8 +45,8 @@ const Insumos = () => {
           <td>7771104762</td>
           <td>4</td>
           <td>00070511</td>
-          <td>imagen</td>
-          <td>imagen</td>
+          <td><img src="assets/Plato.png" alt="" width="60px" height="60px"/></td>
+          <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
         </tr>
         <tr>
           <td>Familia Jimenéz</td>
@@ -53,8 +54,8 @@ const Insumos = () => {
           <td>7771036588</td>
           <td>4</td>
           <td>00070512</td>
-          <td>imagen</td>
-          <td>imagen</td>
+          <td><img src="assets/Plato.png" alt="" width="60px" height="60px"/></td>
+          <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
         </tr>
         <tr>
           <td>Familia González</td>
@@ -62,8 +63,8 @@ const Insumos = () => {
           <td>7777192754</td>
           <td>5</td>
           <td>00070514</td>
-          <td>imagen</td>
-          <td>imagen</td>
+          <td><img src="assets/Plato.png" alt="" width="60px" height="60px"/></td>
+          <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
         </tr>
         <tr>
           <td>Familia Hernández</td>
@@ -71,13 +72,13 @@ const Insumos = () => {
           <td>7771039456</td>
           <td>4</td>
           <td>00070523</td>
-          <td>imagen</td>
-          <td>imagen</td> 
+          <td><img src="assets/Plato.png" alt="" width="60px" height="60px"/></td>
+          <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
         </tr>
       </tbody>
     </Table>
-    
     </div>
+    
   )
 }
 

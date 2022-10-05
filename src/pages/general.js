@@ -4,9 +4,9 @@ import Table from 'react-bootstrap/Table';
 
 const General = () => {
   return (
-    <div style={{justifyContent: 'center', alignItems: 'center', height:'90vh'}}>
-    <h1>Informe general</h1>
-
+    <div style={{justifyContent: 'center', alignItems: 'center', height:'150vh'}}>
+    <h1 className='title'>Informe general</h1>
+    <br></br>
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -19,18 +19,46 @@ const General = () => {
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>1234</td>
+          <td>Familia Chavéz</td>
+          <td>marymin@gmail.com</td>
+          <td>7771247893</td>
+          <td>4</td>
+          <td>00070531</td>
         </tr>
         <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>1234</td>
+          <td>Familia Rivera</td>
+          <td>volodyapavelev@gmail.com</td>
+          <td>7772680483</td>
+          <td>5</td>
+          <td>00070598</td>
+        </tr>
+        <tr>
+          <td>Familia Sierra</td>
+          <td>atbatb1@gmail.com</td>
+          <td>7771104762</td>
+          <td>4</td>
+          <td>00070511</td>
+        </tr>
+        <tr>
+          <td>Familia Jimenéz</td>
+          <td>mcal69@gmail.com</td>
+          <td>7771036588</td>
+          <td>4</td>
+          <td>00070512</td>
+        </tr>
+        <tr>
+          <td>Familia González</td>
+          <td>junadelvie@gmail.com</td>
+          <td>7777192754</td>
+          <td>5</td>
+          <td>00070514</td>
+        </tr>
+        <tr>
+          <td>Familia Hernández</td>
+          <td>bktoshiro@gmail.com</td>
+          <td>7771039456</td>
+          <td>4</td>
+          <td>00070523</td>
         </tr>
       </tbody>
     </Table>

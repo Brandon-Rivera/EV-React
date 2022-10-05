@@ -9,6 +9,7 @@ import Detallado from './pages/detallado';
 import Registro from './pages/registroSesion';
 import Inicio from './pages/inicioSesion';
 import Form from './pages/Form';
+import Form2 from './pages/FormInicio';
 
 
 
@@ -22,7 +23,7 @@ function App() {
         <Route path="/insumos" element={<Insumos/>}></Route>
         <Route path="/reporte-detallado" element={<Detallado/>}></Route>
         <Route path="/registrar-sesion" element={<Form/>}></Route>
-        <Route path="/iniciar-sesion" element={<Inicio/>}></Route>
+        <Route path="/iniciar-sesion" element={<Form2/>}></Route>
       </Routes>
     </Router>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
-import validate from './validateInfo';
-import useForm from './useForm';
+import validate from './validateInfo2';
+import useForm from './useForm2';
 import './Form.css';
 
 const FormSignup = ({ submitForm }) => {
@@ -13,20 +13,8 @@ const FormSignup = ({ submitForm }) => {
     <div className='form-content-right'>
       <form onSubmit={handleSubmit} className='form' noValidate>
         <h1>
-          ¡Comienza con nosotros hoy! Cree su cuenta completando la siguiente información.
+          ¡Bienvenidos y Bienvenidas! A Banco de Alimentos Morelos.
         </h1>
-        <div className='form-inputs'>
-          <label className='form-label'>Usuario</label>
-          <input
-            className='form-input'
-            type='text'
-            name='username'
-            placeholder='Introduce tu usuario'
-            value={values.username}
-            onChange={handleChange}
-          />
-          {errors.username && <p>{errors.username}</p>}
-        </div>
         <div className='form-inputs'>
           <label className='form-label'>Correo</label>
           <input
@@ -51,23 +39,11 @@ const FormSignup = ({ submitForm }) => {
           />
           {errors.password && <p>{errors.password}</p>}
         </div>
-        <div className='form-inputs'>
-          <label className='form-label'>Confirmar contraseña</label>
-          <input
-            className='form-input'
-            type='password'
-            name='password2'
-            placeholder='Confirma tu contraseña'
-            value={values.password2}
-            onChange={handleChange}
-          />
-          {errors.password2 && <p>{errors.password2}</p>}
-        </div>
         <button className='form-input-btn' type='submit'>
-          Registrar
+          Iniciar sesión
         </button>
         <span className='form-input-login'>
-        ¿Ya tienes una cuenta? Inicia sesión <a href='iniciar-sesion'>aquí</a>
+        ¿No tienes una cuenta? Regístrate <a href='registrar-sesion'>aquí</a>
         </span>
       </form>
     </div>

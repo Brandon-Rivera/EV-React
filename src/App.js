@@ -6,8 +6,6 @@ import Home from './pages';
 import General from './pages/general';
 import Insumos from './pages/insumos';
 import Detallado from './pages/detallado';
-import Registro from './pages/registroSesion';
-import Inicio from './pages/inicioSesion';
 import Form from './pages/Form';
 import Form2 from './pages/FormInicio';
 

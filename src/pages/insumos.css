@@ -5,34 +5,3 @@
     margin-right: 370px;
     margin-left: 370px;
 }
-
-Table {
-    margin-left: auto;
-    margin-right: auto;
-    border: "solid 1px black";
-    display: "block";
-    height: "150px";
-    overflow-x: auto;
-}
-  
-/* td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-} */
-
-tr {
-    background-color: #dddddd;
-}
-
-th {
-    color: white; 
-    position: "sticky";
-    top: 0;
-    background-color: black;
-}
-
-td {
-    min-width: "300px";
-}
-

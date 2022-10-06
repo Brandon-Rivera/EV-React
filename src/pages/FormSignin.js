@@ -1,6 +1,7 @@
 import React from 'react';
 import validate from './validateInfo2';
 import useForm from './useForm2';
+import ErrorModal from './ErrorModal';
 import './Form.css';
 
 const FormSignup = ({ submitForm }) => {
@@ -46,6 +47,7 @@ const FormSignup = ({ submitForm }) => {
         ¿No tienes una cuenta? Regístrate <a href='registrar-sesion'>aquí</a>
         </span>
       </form>
+      <ErrorModal show={modalShow} title='Error master!' message='Usuario o contraseña incorrectos' onHide={() => setModalShow(false)}/>
     </div>
   );
 };

@@ -13,37 +13,38 @@ const FormSignup = ({ submitForm }) => {
     <div className='form-content-right'>
       <form onSubmit={handleSubmit} className='form' noValidate>
         <h1>
-          ¡Bienvenidos y Bienvenidas! A Banco de Alimentos Morelos.
+          Get started with us today! Create your account by filling out the
+          information below.
         </h1>
         <div className='form-inputs'>
-          <label className='form-label'>Correo</label>
+          <label className='form-label'>Username</label>
           <input
             className='form-input'
-            type='email'
-            name='email'
-            placeholder='Introduce tu correo'
-            value={values.email}
+            type='text'
+            name='adminName'
+            placeholder='Enter your username'
+            value={values.adminName}
             onChange={handleChange}
           />
-          {errors.email && <p>{errors.email}</p>}
+          {errors.adminName && <p>{errors.adminName}</p>}
         </div>
         <div className='form-inputs'>
-          <label className='form-label'>Contraseña</label>
+          <label className='form-label'>Password</label>
           <input
             className='form-input'
             type='password'
-            name='password'
-            placeholder='Introduce tu contraseña'
-            value={values.password}
+            name='adminPassword'
+            placeholder='Enter your password'
+            value={values.adminPassword}
             onChange={handleChange}
           />
-          {errors.password && <p>{errors.password}</p>}
+          {errors.adminPassword && <p>{errors.adminPassword}</p>}
         </div>
         <button className='form-input-btn' type='submit'>
-          Iniciar sesión
+          Sign up
         </button>
         <span className='form-input-login'>
-        ¿No tienes una cuenta? Regístrate <a href='registrar-sesion'>aquí</a>
+          Already have an account? Login <a href='#'>here</a>
         </span>
       </form>
     </div>

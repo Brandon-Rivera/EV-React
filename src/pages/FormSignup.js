@@ -21,48 +21,36 @@ const FormSignup = ({ submitForm }) => {
           <input
             className='form-input'
             type='text'
-            name='username'
+            name='adminName'
             placeholder='Enter your username'
-            value={values.username}
+            value={values.adminName}
             onChange={handleChange}
           />
-          {errors.username && <p>{errors.username}</p>}
+          {errors.adminName && <p>{errors.adminName}</p>}
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Email</label>
           <input
             className='form-input'
             type='email'
-            name='email'
+            name='eMail'
             placeholder='Enter your email'
-            value={values.email}
+            value={values.eMail}
             onChange={handleChange}
           />
-          {errors.email && <p>{errors.email}</p>}
+          {errors.eMail && <p>{errors.eMail}</p>}
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Password</label>
           <input
             className='form-input'
             type='password'
-            name='password'
+            name='adminPassword'
             placeholder='Enter your password'
-            value={values.password}
+            value={values.adminPassword}
             onChange={handleChange}
           />
-          {errors.password && <p>{errors.password}</p>}
-        </div>
-        <div className='form-inputs'>
-          <label className='form-label'>Confirm Password</label>
-          <input
-            className='form-input'
-            type='password'
-            name='password2'
-            placeholder='Confirm your password'
-            value={values.password2}
-            onChange={handleChange}
-          />
-          {errors.password2 && <p>{errors.password2}</p>}
+          {errors.adminPassword && <p>{errors.adminPassword}</p>}
         </div>
         <button className='form-input-btn' type='submit'>
           Sign up

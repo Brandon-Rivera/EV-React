@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 
 const useForm = (callback, validate) => {
   const [values, setValues] = useState({
-    username: '',
-    email: '',
-    password: '',
-    password2: ''
+    adminName: '',
+    eMail: '',
+    adminPassword: '',
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,6 +19,18 @@ const useForm = (callback, validate) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    // const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
+
+    // const response = fetch(`${api}/adminregister`,
+    //                               {
+    //                                   method: 'POST',
+    //                                   headers: {
+    //                                     'Content-Type': 'application/json'
+    //                                   },
+    //                                 body: JSON.stringify(values)
+    //                               }
+    //                             );
 
     setErrors(validate(values));
     setIsSubmitting(true);

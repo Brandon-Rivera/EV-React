@@ -20,36 +20,36 @@ const FormSignup = ({ submitForm }) => {
           <input
             className='form-input'
             type='text'
-            name='username'
+            name='adminName'
             placeholder='Introduce tu usuario'
-            value={values.username}
+            value={values.adminName}
             onChange={handleChange}
           />
-          {errors.username && <p>{errors.username}</p>}
+          {errors.adminName && <p>{errors.adminName}</p>}
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Correo</label>
           <input
             className='form-input'
             type='email'
-            name='email'
+            name='eMail'
             placeholder='Introduce tu correo'
-            value={values.email}
+            value={values.eMail}
             onChange={handleChange}
           />
-          {errors.email && <p>{errors.email}</p>}
+          {errors.eMail && <p>{errors.eMail}</p>}
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Contraseña</label>
           <input
             className='form-input'
             type='password'
-            name='password'
+            name='adminPassword'
             placeholder='Introduce tu contraseña'
-            value={values.password}
+            value={values.adminPassword}
             onChange={handleChange}
           />
-          {errors.password && <p>{errors.password}</p>}
+          {errors.adminPassword && <p>{errors.adminPassword}</p>}
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Confirmar contraseña</label>

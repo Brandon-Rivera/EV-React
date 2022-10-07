@@ -12,7 +12,7 @@ const Insumos = () => {
             height: "350px",
             overflow: "auto",
             width: "55%"
-          }}>
+          }}> 
         <thead>
           <tr>
             <th style={{ position: "sticky", top: 0}}>Beneficiario</th>

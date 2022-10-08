@@ -5,28 +5,29 @@ import './general.css';
 const General = () => {
   const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
-  const [user, setUser] = useState({ adminName: "" });
+  const [users, setUsers] = useState({ adminName: "" });
   // vacío, se ejecuta cada vez que renderiza el componente
   // [], se ejecuta la primera vez que renderiza el componente
   // [estado], se ejecuta solo cuando se actualice el estado, sin bucle
   useEffect(() => {
-      getUser()
-  }, [user])
+      getUsers()
+  }, [users])
 
   /* Todas las funciones */
-  const getUser = async () => {
+  const getUsers = async () => {
       // const token = localStorage.getItem('token')
-      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXN1YXJpbyI6InJveTMiLCJpYXQiOjE2NjUxNTQwNjEsImV4cCI6MTY2NTE1NDU2MX0.Z0L9h0pKMuc5uawpgfxW6czgTylwGgdi7HZjWwKqEb4"
+      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjAsImFkbWluIjoiRnJhbmsyIiwiaWF0IjoxNjY1MjAzODA5LCJleHAiOjE2NjUyMTEwMDl9.nwrWZegdmUmA_679hvnrHoJxW0w4OcfdaFftWs9O350"
       // const id = jwt(token).id
       // `${api}/administrador/${id}`
-      const response = await fetch(`${api}/administrador/1`, {
+      const response = await fetch(`${api}/user`, {
           headers: {
               'x-access-token': token
           }
       })
       const data = await response.json()
-      setUser(data[0])
+      setUsers(data)
   }
+  const userss = Object.values(users)
 
   return (
     <div style={{justifyContent: 'center', alignItems: 'center', height:'150vh'}}>
@@ -37,7 +38,7 @@ const General = () => {
             display: "block",
             height: "350px",
             overflow: "auto",
-            width: "60%"
+            width: "50%"
           }}>
       <thead>
         <tr>
@@ -49,20 +50,15 @@ const General = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>{user.adminName}</td>
-          <td>marymin@gmail.com</td>
-          <td>7771247893</td>
+        {userss.map(user => (
+          <tr key={user.id}>
+          <td>{user.userName}</td>
+          <td>{user.eMail}</td>
+          <td>{user.phoneNumber}</td>
           <td>4</td>
-          <td>00070531</td>
+          <td>{user.folio}</td>
         </tr>
-        <tr>
-          <td>Familia Rivera</td>
-          <td>volodyapavelev@gmail.com</td>
-          <td>7772680483</td>
-          <td>5</td>
-          <td>00070598</td>
-        </tr>
+        ))}
       </tbody>
     </table>
     

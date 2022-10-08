@@ -29,8 +29,17 @@ const useForm = (callback, validate) => {
                                         'Content-Type': 'application/json'
                                       },
                                     body: JSON.stringify(values)
-                                  }
-                                );
+                                  })
+                                  .then((response) => {
+                                    console.log('Password:', values.adminPassword)
+                                    return response.json()
+                                  })
+                                  .then((data) => {
+                                    console.log('Success:', data);
+                                  })
+                                  .catch((error) => {
+                                    console.error('Error:', error);
+                                  });
 
     setErrors(validate(values));
     setIsSubmitting(true);

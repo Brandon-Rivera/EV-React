@@ -15,8 +15,7 @@ const General = () => {
 
   /* Todas las funciones */
   const getUsers = async () => {
-      // const token = localStorage.getItem('token')
-      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjAsImFkbWluIjoiRnJhbmsyIiwiaWF0IjoxNjY1MjAzODA5LCJleHAiOjE2NjUyMTEwMDl9.nwrWZegdmUmA_679hvnrHoJxW0w4OcfdaFftWs9O350"
+      const token = localStorage.getItem('token')
       // const id = jwt(token).id
       // `${api}/administrador/${id}`
       const response = await fetch(`${api}/user`, {

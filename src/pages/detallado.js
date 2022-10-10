@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import BarChart from '../components/BarChart';
+import LineChart from '../components/LineChart';
+import PieChart from '../components/PieChart';
 import { UserData } from '../components/Data'
 import './detallado.css';
 
@@ -19,6 +21,12 @@ const Detallado = () => {
         <h1 className='title'>Reporte Detallado</h1>
         <div style={{width: "700px"}}>
           <BarChart chartData={userData}/>
+        </div>
+        <div style={{width: "700px"}}>
+          <LineChart chartData={userData}/>
+        </div>
+        <div style={{width: "700px"}}>
+          <PieChart chartData={userData}/>
         </div>
     </div>
   )

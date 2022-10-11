@@ -16,6 +16,7 @@ export const NavLink = styled(Link)`
     display: flex;
     align-items: center;
     text-decoration: none;
+    text-align: center;
     padding: 0 1rem;
     height: 100%;
     cursor: pointer;
@@ -72,6 +73,7 @@ export const NavBtnLink = styled(Link)`
     outline: none;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    text-align: center;
     text-decoration: none;
 
     /* 2nd Nav */

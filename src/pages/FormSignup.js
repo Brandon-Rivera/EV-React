@@ -2,6 +2,7 @@ import React from 'react';
 import validate from './validateInfo';
 import useForm from './useForm';
 import './Form.css';
+import { Link } from 'react-router-dom';
 
 const FormSignup = ({ submitForm }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
@@ -13,50 +14,49 @@ const FormSignup = ({ submitForm }) => {
     <div className='form-content-right'>
       <form onSubmit={handleSubmit} className='form' noValidate>
         <h1>
-          Get started with us today! Create your account by filling out the
-          information below.
+          ¡Regístrate aquí!
         </h1>
         <div className='form-inputs'>
-          <label className='form-label'>Username</label>
+          <label className='form-label'>Nombre de usuario</label>
           <input
             className='form-input'
             type='text'
             name='adminName'
-            placeholder='Enter your username'
+            placeholder='Introduce tu nombre de usuario deseado'
             value={values.adminName}
             onChange={handleChange}
           />
           {errors.adminName && <p>{errors.adminName}</p>}
         </div>
         <div className='form-inputs'>
-          <label className='form-label'>Email</label>
+          <label className='form-label'>E-mail</label>
           <input
             className='form-input'
             type='email'
             name='eMail'
-            placeholder='Enter your email'
+            placeholder='Introduce tu correo electrónico'
             value={values.eMail}
             onChange={handleChange}
           />
           {errors.eMail && <p>{errors.eMail}</p>}
         </div>
         <div className='form-inputs'>
-          <label className='form-label'>Password</label>
+          <label className='form-label'>Contraseña</label>
           <input
             className='form-input'
             type='password'
             name='adminPassword'
-            placeholder='Enter your password'
+            placeholder='Introduce tu contraseña deseada'
             value={values.adminPassword}
             onChange={handleChange}
           />
           {errors.adminPassword && <p>{errors.adminPassword}</p>}
         </div>
         <button className='form-input-btn' type='submit'>
-          Sign up
+          Registrarse
         </button>
         <span className='form-input-login'>
-          Already have an account? Login <a href='#'>here</a>
+          ¿Ya tienes una cuenta? Inicia sesión <Link to="/iniciar-sesion">aquí</Link>
         </span>
       </form>
     </div>

@@ -7,15 +7,16 @@ const Navbar = () => {
         localStorage.clear();
     };
 
-    var NavBtn = "iniciar sesión"
+    var NavBtn = "Iniciar sesión"
 
     const auth = localStorage.getItem("user");
     const token = localStorage.getItem("token");
-    
-    if(token == ""){
-        NavBtn = "iniciar sesión";
-    }else{
-        NavBtn = "Cerrar sesión";
+
+    if(token == null){
+        NavBtn = "Iniciar sesión"
+    }
+    else{
+        NavBtn = "Cerrar sesión"
     }
 
     return (

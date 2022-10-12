@@ -7,7 +7,16 @@ const Navbar = () => {
         localStorage.clear();
     };
 
+    var NavBtn = "iniciar sesión"
+
     const auth = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    
+    if(token == ""){
+        NavBtn = "iniciar sesión";
+    }else{
+        NavBtn = "Cerrar sesión";
+    }
 
     return (
         <>
@@ -28,7 +37,7 @@ const Navbar = () => {
                         Reporte Detallado
                     </NavLink>
                     <NavBtnLink onClick={logout} to="/iniciar-sesion" activeStyle>
-                        Logout
+                        {NavBtn}
                     </NavBtnLink>
                 </NavMenu>
             </Nav>

@@ -7,6 +7,10 @@ const Navbar = () => {
         localStorage.clear();
     };
 
+    function autoRefresh() {
+        window.location = window.location.href;
+    }
+
     var NavBtn = "Iniciar sesión"
 
     const auth = localStorage.getItem("user");
@@ -14,9 +18,11 @@ const Navbar = () => {
 
     if(token == null){
         NavBtn = "Iniciar sesión"
+        // setInterval(autoRefresh(), 5000);
     }
     else{
         NavBtn = "Cerrar sesión"
+        // setInterval(autoRefresh(), 5000);
     }
 
     return (

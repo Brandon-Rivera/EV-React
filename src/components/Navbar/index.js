@@ -27,9 +27,9 @@ const Navbar = () => {
                     <NavLink to="/reporte-detallado" activeStyle>
                         Reporte Detallado
                     </NavLink>
-                    <NavLink onClick={logout} to="/iniciar-sesion" activeStyle>
+                    <NavBtnLink onClick={logout} to="/iniciar-sesion" activeStyle>
                         Logout
-                    </NavLink>
+                    </NavBtnLink>
                 </NavMenu>
             </Nav>
         </>

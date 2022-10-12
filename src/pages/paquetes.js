@@ -1,7 +1,13 @@
+import { Button } from 'bootstrap';
 import React from 'react'
 import './paquetes.css';
 
 const paquetes = () => {
+
+  function openImg(){
+    console.log("Funcion de la imagen :D");
+  }
+
   return (
     <>
     <div><h1 className='title'>paquetes</h1><br/></div>
@@ -28,15 +34,15 @@ const paquetes = () => {
               <td>Frijoles</td>
               <td>KG</td>
               <td>1</td>
-              <td><img src="assets/pencil.png" alt="" width="30px" height="30px"/></td>
-              <td></td>
+              <td><button type='button'><img src="assets/pencil.png" alt="" width="30px" height="30px"/></button></td>
+              <td><button type='button'><img src="assets/trash.png" alt="" width="30px" height="30px"/></button></td>
             </tr>
             <tr>
               <td>Arroz</td>
               <td>KG</td>
               <td>2</td>
-              <td></td>
-              <td></td>
+              <td><button type='button'><img src="assets/pencil.png" onClick={openImg} alt="" width="30px" height="30px"/></button></td>
+              <td><button type='button'><img src="assets/trash.png" alt="" width="30px" height="30px"/></button></td>
             </tr>
           </tbody>
       </table>
@@ -52,7 +58,7 @@ const paquetes = () => {
           <tbody>
             <tr>
               <td className='lateral-header'>Carbohidratos</td>
-              <td>7000</td>
+              <td>7000 / 8000</td>
             </tr>
             <tr>
               <td className='lateral-header'>Lipidos</td>
@@ -61,6 +67,14 @@ const paquetes = () => {
             <tr>
               <td className='lateral-header'>Proteinas</td>
               <td>400</td>
+            </tr>
+            <tr>
+              <td className='lateral-header'>Adultos</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td className='lateral-header'>Infantes</td>
+              <td>3</td>
             </tr>
           </tbody>
       </table>

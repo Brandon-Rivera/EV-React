@@ -61,11 +61,11 @@ const paquetes = () => {
             </tr>
             <tr>
               <td className='lateral-header'>Lipidos</td>
-              <td>200</td>
+              <td>200 / 700</td>
             </tr>
             <tr>
               <td className='lateral-header'>Proteinas</td>
-              <td>400</td>
+              <td>400 / 500</td>
             </tr>
             <tr>
               <td className='lateral-header'>Adultos</td>

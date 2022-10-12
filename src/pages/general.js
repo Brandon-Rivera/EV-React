@@ -60,7 +60,6 @@ const General = () => {
         ))}
       </tbody>
     </table>
-    
     </div>
   )
 }

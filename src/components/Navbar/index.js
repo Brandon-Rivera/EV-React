@@ -7,9 +7,7 @@ const Navbar = () => {
         localStorage.clear();
     };
 
-    const auth = localStorage.getItem('token');
-
-    
+    const auth = localStorage.getItem("user");
 
     return (
         <>
@@ -29,9 +27,9 @@ const Navbar = () => {
                     <NavLink to="/reporte-detallado" activeStyle>
                         Reporte Detallado
                     </NavLink>
-                    <NavBtnLink onClick={logout} to="/iniciar-sesion" activeStyle>
-                        Cerrar sesión
-                    </NavBtnLink>
+                    <NavLink onClick={logout} to="/iniciar-sesion" activeStyle>
+                        Logout
+                    </NavLink>
                 </NavMenu>
             </Nav>
         </>

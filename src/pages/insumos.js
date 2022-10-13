@@ -61,7 +61,7 @@ const Insumos = () => {
                   <td>1 kg de lenteja</td>
                   <td>1 kg de pollo</td>
                   <td><Link to="/paquete"><button><img src="assets/Plato.png" alt="" width="60px" height="60px"/></button></Link></td>
-                  <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
+                  <td><Link to="/ubicacion" state={user.id}><button><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></button></Link></td>
                 </tr>
               ))
             }

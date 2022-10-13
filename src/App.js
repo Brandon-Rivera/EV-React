@@ -12,6 +12,7 @@ import Form2 from './pages/FormInicio';
 import Whitelist from './pages/DB/whitelist';
 import Food from './pages/DB/food';
 import Question from './pages/DB/question';
+import Ubicacion from './pages/ubicacion';
 
 
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="/whitelist" element={<Whitelist/>}></Route>
         <Route path="/food" element={<Food/>}></Route>
         <Route path="/question" element={<Question/>}></Route>
+        <Route path="/ubicacion" element={<Ubicacion/>}></Route>
       </Routes>
     </Router>
   );

@@ -42,11 +42,11 @@ const Navbar = () => {
                         console.log(value);
                         switch (value) {
                             case 'Food':
-                                navigate("/food"); 
+                                navigate("/food"); break;
                             case 'Questions':
-                                navigate("/question"); 
+                                navigate("/question"); break;
                             case 'Whitelist':
-                                navigate("/whitelist");
+                                navigate("/whitelist"); break;
                         }
                     }} />;
                     <NavBtnLink onClick={logout} to="/iniciar-sesion" activeStyle>

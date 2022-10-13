@@ -9,7 +9,7 @@ import Detallado from './pages/detallado';
 import Paquetes from './pages/paquetes';
 import Form from './pages/Form';
 import Form2 from './pages/FormInicio';
-import Whitelist from './pages/DB/whitelist';
+import Whitelist from './pages/FormWhite';
 import Food from './pages/DB/food';
 import Question from './pages/DB/question';
 import Ubicacion from './pages/ubicacion';

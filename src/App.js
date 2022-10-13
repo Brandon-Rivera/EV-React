@@ -13,11 +13,13 @@ import Whitelist from './pages/FormWhite';
 import Food from './pages/DB/food';
 import Question from './pages/DB/question';
 import Ubicacion from './pages/ubicacion';
+import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
 
 
 
 function App() {
   return (
+    <LoadScript googleMapsApiKey="AIzaSyCaZDxJzyD24sCyioMbzBc0vZ66dtjsX_k">
     <Router>
       <Navbar />
       <Routes>
@@ -34,6 +36,7 @@ function App() {
         <Route path="/ubicacion" element={<Ubicacion/>}></Route>
       </Routes>
     </Router>
+    </LoadScript>
   );
 }
 

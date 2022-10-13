@@ -39,15 +39,14 @@ const Navbar = () => {
                     </NavLink>
                     <Dropdown options={options} value={section} placeholder="Select an option" onChange={({ value }) => {
                         setSection(value);
+                        console.log(value);
                         switch (value) {
                             case 'Food':
-                                navigate("/informe/general");
+                                navigate("/food"); 
                             case 'Questions':
-                                navigate("/informe/general");
+                                navigate("/question"); 
                             case 'Whitelist':
-                                navigate("/informe/general");
-                            default:
-                                navigate("/"); 
+                                navigate("/whitelist");
                         }
                     }} />;
                     <NavBtnLink onClick={logout} to="/iniciar-sesion" activeStyle>

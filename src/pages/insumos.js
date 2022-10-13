@@ -1,7 +1,34 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom';
+import jwt from 'jwt-decode'
 import './insumos.css';
 
 const Insumos = () => {
+  const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
+
+  const [users, setUsers] = useState({ adminName: "" });
+  // vacío, se ejecuta cada vez que renderiza el componente
+  // [], se ejecuta la primera vez que renderiza el componente
+  // [estado], se ejecuta solo cuando se actualice el estado, sin bucle
+  useEffect(() => {
+      getUsers()
+  }, [users])
+
+  /* Todas las funciones */
+  const getUsers = async () => {
+      const token = localStorage.getItem('token')
+      const id = jwt(token).id
+      // `${api}/administrador/${id}`
+      const response = await fetch(`${api}/user`, {
+          headers: {
+              'x-access-token': token
+          }
+      })
+      const data = await response.json()
+      setUsers(data)
+  }
+  const userss = Object.values(users)
+
   return (
     <div style={{justifyContent: 'center', alignItems: 'center', height:'150vh'}}>
     <h1 className='title'>Insumos</h1>
@@ -25,60 +52,19 @@ const Insumos = () => {
           </tr>
         </thead>
           <tbody>
-            <tr>
-              <td>Familia Chavéz</td>
-              <td>1 kg de arroz</td>
-              <td>1 kg de frijol</td>
-              <td>1 kg de lenteja</td>
-              <td>1 kg de pollo</td>
-              <td><img src="assets/Plato.png" alt="" width="60px" height="60px"/></td>
-              <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
-            </tr>
-            <tr>
-              <td>Familia Rivera</td>
-              <td>1 kg de arroz</td>
-              <td>1 kg de frijol</td>
-              <td>1 kg de lenteja</td>
-              <td>1 kg de pollo</td>
-              <td><img src="assets/Plato.png" alt="" width="60px" height="60px"/></td>
-              <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
-            </tr>
-            <tr>
-              <td>Familia Sierra</td>
-              <td>1 kg de arroz</td>
-              <td>1 kg de frijol</td>
-              <td>1 kg de lenteja</td>
-              <td>1 kg de pollo</td>
-              <td><img src="assets/Plato.png" alt="" width="60px" height="60px"/></td>
-              <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
-            </tr>
-            <tr>
-              <td>Familia Jimenéz</td>
-              <td>1 kg de arroz</td>
-              <td>1 kg de frijol</td>
-              <td>1 kg de lenteja</td>
-              <td>1 kg de pollo</td>
-              <td><img src="assets/Plato.png" alt="" width="60px" height="60px"/></td>
-              <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
-            </tr>
-            <tr>
-              <td>Familia González</td>
-              <td>1 kg de arroz</td>
-              <td>1 kg de frijol</td>
-              <td>1 kg de lenteja</td>
-              <td>1 kg de pollo</td>
-              <td><img src="assets/Plato.png" alt="" width="60px" height="60px"/></td>
-              <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
-            </tr>
-            <tr>
-              <td>Familia Hernández</td>
-              <td>1 kg de arroz</td>
-              <td>1 kg de frijol</td>
-              <td>1 kg de lenteja</td>
-              <td>1 kg de pollo</td>
-              <td><img src="assets/Plato.png" alt="" width="60px" height="60px"/></td>
-              <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
-            </tr>
+            {
+              userss.map(user => (
+                <tr key= {user.id}>
+                  <td>{user.userName}</td>
+                  <td>1 kg de arroz</td>
+                  <td>1 kg de frijol</td>
+                  <td>1 kg de lenteja</td>
+                  <td>1 kg de pollo</td>
+                  <td><Link to="/paquete"><button><img src="assets/Plato.png" alt="" width="60px" height="60px"/></button></Link></td>
+                  <td><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></td>
+                </tr>
+              ))
+            }
           </tbody>
       </table>
     </div>

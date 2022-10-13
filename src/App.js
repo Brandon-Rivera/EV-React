@@ -21,6 +21,7 @@ function App() {
         <Route path="/informe-general" element={<General/>}></Route>
         <Route path="/insumos" element={<Insumos/>}></Route>
         <Route path="/reporte-detallado" element={<Paquetes/>}></Route>
+        <Route path="/paquete" element={<Paquetes/>}></Route>
         <Route path="/registrar-sesion" element={<Form/>}></Route>
         <Route path="/iniciar-sesion" element={<Form2/>}></Route>
       </Routes>

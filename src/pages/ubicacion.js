@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import jwt from "jwt-decode";
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+// import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 
 const Ubicacion = () => {
 
@@ -33,22 +33,22 @@ const Ubicacion = () => {
     }
     const ubi = Object.entries(ubicacion)
 
-    const {isLoaded} = useLoadScript({googleMapsApiKey: "AIzaSyBhN9aOoiyE9_ouRyVzQsHRyNVuOpGlAJQ"})
+    // const {isLoaded} = useLoadScript({googleMapsApiKey: "AIzaSyBhN9aOoiyE9_ouRyVzQsHRyNVuOpGlAJQ"})
 
-     if(!isLoaded){
-         return <div>Hola</div>
-    }
+    //  if(!isLoaded){
+    //      return <div>Hola</div>
+    // }
 
     return (
         <div>
             <h1>{userId}</h1>
-            <GoogleMap
+            {/* <GoogleMap
                 zoom={10}
                 center={{lat: 44, lng: -80}}
                 mapContainerClassName="map-container"
             >
 
-            </GoogleMap>
+            </GoogleMap> */}
         </div>
     )
 }

@@ -6,6 +6,7 @@ const General = () => {
   const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
   const [users, setUsers] = useState({ adminName: "" });
+  const [famMembers, setFamMembers] = useState({ adminName: "" });
   // vacío, se ejecuta cada vez que renderiza el componente
   // [], se ejecuta la primera vez que renderiza el componente
   // [estado], se ejecuta solo cuando se actualice el estado, sin bucle
@@ -13,6 +14,10 @@ const General = () => {
       getUsers()
   }, [users])
 
+  useEffect(() => {
+    getFamMembers()
+  }, [famMembers])
+  
   /* Todas las funciones */
   const getUsers = async () => {
       const token = localStorage.getItem('token')
@@ -28,6 +33,21 @@ const General = () => {
   }
   const userss = Object.values(users)
 
+  const getFamMembers= async () => {
+    const token = localStorage.getItem('token')
+    const id = jwt(token).id
+    // `${api}/administrador/${id}`
+  
+      const response = await fetch(`${api}/famMemberByIdUser/${1}`, {
+        headers: {
+            'x-access-token': token
+        }
+    })
+      const data = await response.json()
+      setFamMembers(data)
+  }
+  const famMemberss = Object.values(famMembers)
+  
   return (
     <div style={{justifyContent: 'center', alignItems: 'center', height:'150vh'}}>
     <h1 className='title'>Informe general</h1>
@@ -49,14 +69,15 @@ const General = () => {
         </tr>
       </thead>
       <tbody>
-        {userss.map(user => (
-          <tr key={user.id}>
-          <td>{user.userName}</td>
-          <td>{user.eMail}</td>
-          <td>{user.phoneNumber}</td>
-          <td>4</td>
-          <td>{user.folio}</td>
-        </tr>
+        {
+        userss.map(user => (
+            <tr >
+              <td>{user.userName}</td>
+              <td>{user.eMail}</td>
+              <td>{user.phoneNumber}</td>
+              <td>4</td>
+              <td>{user.folio}</td>
+            </tr>
         ))}
       </tbody>
     </table>

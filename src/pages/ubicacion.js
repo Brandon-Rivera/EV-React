@@ -8,6 +8,7 @@ const Ubicacion = () => {
 
   const location = useLocation()
   const userId = location.state
+  console.log(userId)
 
   const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
@@ -24,7 +25,7 @@ const Ubicacion = () => {
     const token = localStorage.getItem('token')
     const id = jwt(token).id
     // `${api}/administrador/${id}`
-    const response = await fetch(`${api}/slocationByUser/${userId}`, {
+    const response = await fetch(`${api}/slocationByUser/${userId[0]}`, {
       headers: {
         'x-access-token': token
       }
@@ -41,7 +42,7 @@ const Ubicacion = () => {
 
   return (
     <div>
-      
+        <h2 className="titulo_mapa">Ubicación de {userId[1]}</h2>
         <GoogleMap
             mapContainerStyle={containerStyle}
             center={ubicacion}

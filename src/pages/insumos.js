@@ -42,26 +42,28 @@ const Insumos = () => {
           }}> 
         <thead>
           <tr>
-            <th style={{ position: "sticky", top: 0}}>Beneficiario</th>
-            <th style={{ position: "sticky", top: 0}}>Alimento 1</th>
-            <th style={{ position: "sticky", top: 0}}>Alimento 2</th>
-            <th style={{ position: "sticky", top: 0}}>Alimento 3</th>
-            <th style={{ position: "sticky", top: 0}}>Alimento 4</th>
-            <th style={{ position: "sticky", top: 0}}>Paquete</th>
-            <th style={{ position: "sticky", top: 0}}>Ubicación</th>
+            <th style={{ position: "sticky", top: 0, textAlign:'center'}}>Beneficiario</th>
+            <th style={{ position: "sticky", top: 0, textAlign:'center'}}>Alimento 1</th>
+            <th style={{ position: "sticky", top: 0, textAlign:'center'}}>Alimento 2</th>
+            <th style={{ position: "sticky", top: 0, textAlign:'center'}}>Alimento 3</th>
+            <th style={{ position: "sticky", top: 0, textAlign:'center'}}>Alimento 4</th>
+            <th style={{ position: "sticky", top: 0, textAlign:'center'}}>Paquete</th>
+            <th style={{ position: "sticky", top: 0, textAlign:'center'}}>Ubicación</th>
+            <th style={{ position: "sticky", top: 0, textAlign:'center'}}>Miembros</th>
           </tr>
         </thead>
           <tbody>
             {
               userss.map(user => (
                 <tr key= {user.id}>
-                  <td>{user.userName}</td>
-                  <td>1 kg de arroz</td>
-                  <td>1 kg de frijol</td>
-                  <td>1 kg de lenteja</td>
-                  <td>1 kg de pollo</td>
-                  <td><Link to="/paquete"><button><img src="assets/Plato.png" alt="" width="60px" height="60px"/></button></Link></td>
-                  <td><Link to="/ubicacion" state={user.id}><button><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></button></Link></td>
+                  <td style={{top: 0, textAlign:'center'}}>{user.userName}</td>
+                  <td style={{top: 0, textAlign:'center'}}>1 kg de arroz</td>
+                  <td style={{top: 0, textAlign:'center'}}>1 kg de frijol</td>
+                  <td style={{top: 0, textAlign:'center'}}>1 kg de lenteja</td>
+                  <td style={{top: 0, textAlign:'center'}}>1 kg de pollo</td>
+                  <td style={{top: 0, textAlign:'center'}}><Link to="/paquete"><button><img src="assets/Plato.png" alt="" width="60px" height="60px"/></button></Link></td>
+                  <td style={{top: 0, textAlign:'center'}}><Link to="/ubicacion" state={[user.id, user.userName]}><button><img src="assets/Mundo.png" alt="" width="60px" height="60px"/></button></Link></td>
+                  <td style={{top: 0, textAlign:'center'}}><Link to="/miembros" state={[user.id, user.userName]}><button><img src="assets/family.png" alt="" width="60px" height="60px"/></button></Link></td>
                 </tr>
               ))
             }

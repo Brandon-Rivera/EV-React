@@ -13,6 +13,7 @@ import Whitelist from './pages/DB/FormWhite';
 import Food from './pages/DB/FormFood';
 import Question from './pages/DB/question';
 import Ubicacion from './pages/ubicacion';
+import Miembros from './pages/miembros';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/food" element={<Food/>}></Route>
         <Route path="/question" element={<Question/>}></Route>
         <Route path="/ubicacion" element={<Ubicacion/>}></Route>
+        <Route path="/miembros" element={<Miembros/>}></Route>
       </Routes>
     </Router>
     </LoadScript>

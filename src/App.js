@@ -14,12 +14,13 @@ import Food from './pages/DB/FormFood';
 import Question from './pages/DB/question';
 import Ubicacion from './pages/ubicacion';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
 
 
 
 function App() {
   return (
-    <div>
+    <LoadScript googleMapsApiKey="AIzaSyCaZDxJzyD24sCyioMbzBc0vZ66dtjsX_k">
     <Router>
       <Navbar />
       <Routes>
@@ -36,7 +37,7 @@ function App() {
         <Route path="/ubicacion" element={<Ubicacion/>}></Route>
       </Routes>
     </Router>
-    </div>
+    </LoadScript>
   );
 }
 

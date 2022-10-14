@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Nav, Bars, NavMenu, NavLink, NavBtnLink } from "./NavbarElements";
 import { useNavigate } from 'react-router-dom'
 import Dropdown from 'react-dropdown';
@@ -6,22 +6,11 @@ import 'react-dropdown/style.css';
 
 const Navbar = () => {
 
-    var BtnText = "Iniciar sesión";
     const navigate = useNavigate();
-    const token = localStorage.getItem('token')
-    const logout = () => {
-        localStorage.clear();
-    };
 
-    const BtnFunction = () => {
-        if(BtnText === "Iniciar sesión" && token !== null){
-            BtnText = "Cerrar sesión";
-        }
-        else if(BtnText == "Cerrar sesión"){
-            BtnText = "Iniciar sesión";
-            localStorage.clear();
-        }
-    }
+    const logout = () => {
+        localStorage.removeItem('token');
+    };
 
     const auth = localStorage.getItem("user");
 
@@ -64,8 +53,11 @@ const Navbar = () => {
                                 navigate("/whitelist"); break;
                         }
                     }} />;
-                    <NavBtnLink onClick={BtnFunction()} to="/iniciar-sesion" activeStyle>
-                        {BtnText}
+                    <NavBtnLink to="/iniciar-sesion" activeStyle>
+                        Iniciar sesión
+                    </NavBtnLink>
+                    <NavBtnLink onClick={logout} to="/iniciar-sesion" activeStyle>
+                        Cerrar sesión
                     </NavBtnLink>
                 </NavMenu>
             </Nav>

@@ -38,7 +38,7 @@ const Navbar = () => {
                     <NavLink to="/reporte-detallado" activeStyle>
                         Reporte Detallado
                     </NavLink>
-                    <NavLink to="/whitelist" activeStyle>
+                    <NavLink to="/reporte-detallado" activeStyle>
                         Pruebas
                     </NavLink>
                     <Dropdown options={options} value={section} placeholder="Select an option" onChange={({ value }) => {

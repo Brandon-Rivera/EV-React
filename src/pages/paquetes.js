@@ -1,5 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './paquetes.css';
+import PieChart from '../components/PieChart';
+import { Doughnut } from 'react-chartjs-2';
+import { UserData } from '../components/Data'
+
+const StatChart = ({ dataA, dataB, title }) => (
+  <div style={{width: "100px", height: "100px"}}>
+      <Doughnut
+          style={{ display: 'inline' }}
+          data={{
+              datasets: [
+                  {
+                      data: [dataA, dataB],
+                      backgroundColor: [
+                          '#29BB2E',
+                          '#f54242'
+                      ]
+                  }
+              ]
+          }}
+          options={{
+              responsive: true,
+              circumference: 180,
+              rotation: -90,
+              plugins: {
+                  legend: {
+                      position: 'top'
+                  },
+              }
+          }}
+      />
+  </div>
+);
 
 const paquetes = () => {
 
@@ -57,15 +89,15 @@ const paquetes = () => {
           <tbody>
             <tr>
               <td className='lateral-header'>Carbohidratos</td>
-              <td>7000 / 8000</td>
+              <td><StatChart dataA={7000} dataB={8000-7000}/></td>
             </tr>
             <tr>
               <td className='lateral-header'>Lipidos</td>
-              <td>200 / 700</td>
+              <td><StatChart dataA={200} dataB={700-200}/></td>
             </tr>
             <tr>
               <td className='lateral-header'>Proteinas</td>
-              <td>400 / 500</td>
+              <td><StatChart dataA={400} dataB={500-400}/></td>
             </tr>
             <tr>
               <td className='lateral-header'>Adultos</td>

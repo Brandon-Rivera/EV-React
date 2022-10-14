@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import jwt from "jwt-decode";
 import "./miembros.css";
 
@@ -68,9 +68,14 @@ const Miembros = () => {
                             <td style={{top: 0, textAlign:'center'}}>20</td>
                             <td style={{top: 0, textAlign:'center'}}>{miembro.weightV}{" "}kg</td>
                             <td style={{top: 0, textAlign:'center'}}>{miembro.height}{" "}cm</td>
-                            <td style={{top: 0, textAlign:'center'}}><button className="btn"><img src="assets/encuesta.png" alt="" width="60px" height="60px"/></button></td>
+                            <td style={{top: 0, textAlign:'center'}}>
+                                <Link to="/respuestas" state = {[miembro.id, miembro.names]}>
+                                    <button className="btn">
+                                        <img src="assets/encuesta.png" alt="" width="60px" height="60px"/>
+                                    </button>
+                                </Link>
+                            </td>
                         </tr>
-                        
                     ))}
                 </tbody>
             </table>

@@ -14,6 +14,7 @@ import Food from './pages/DB/FormFood';
 import Question from './pages/DB/question';
 import Ubicacion from './pages/ubicacion';
 import Miembros from './pages/miembros';
+import Respuestas from './pages/respuestas';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="/question" element={<Question/>}></Route>
         <Route path="/ubicacion" element={<Ubicacion/>}></Route>
         <Route path="/miembros" element={<Miembros/>}></Route>
+        <Route path="/respuestas" element={<Respuestas/>}></Route>
       </Routes>
     </Router>
     </LoadScript>

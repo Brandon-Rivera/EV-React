@@ -53,7 +53,7 @@ const Navbar = () => {
                         }
                     }} />;
                     <NavBtnLink onClick={logout} to="/iniciar-sesion" activeStyle>
-                        Logout
+                        Iniciar sesión
                     </NavBtnLink>
                 </NavMenu>
             </Nav>

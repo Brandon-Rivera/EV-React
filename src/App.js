@@ -10,7 +10,7 @@ import Paquetes from './pages/paquetes';
 import Form from './pages/Form';
 import Form2 from './pages/FormInicio';
 import Whitelist from './pages/DB/FormWhite';
-import Food from './pages/DB/food';
+import Food from './pages/DB/FormFood';
 import Question from './pages/DB/question';
 import Ubicacion from './pages/ubicacion';
 import 'bootstrap/dist/css/bootstrap.min.css';

@@ -5,20 +5,17 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
-const FormWhite = () => {
+const FormFood = () => {
   const form = useRef();
-  const navigate = useNavigate();
+  const token = localStorage.getItem('token')
 
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
-  const [show2, setShow2] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleClose1 = () => setShow1(false);
   const handleShow1 = () => setShow1(true);
-  const handleClose2 = () => {setShow2(false); setShow1(false);}
-  const handleShow2 = () => setShow2(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,8 +23,11 @@ const FormWhite = () => {
 
     const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
-    const response = await fetch(`${api}/whiteList`,
-      { method: 'POST', body: formData }
+    const response = await fetch(`${api}/food`,
+      { method: 'POST', 
+        headers: {
+        'x-access-token': token
+        }, body: formData }
     );
 
     handleShow();
@@ -39,27 +39,74 @@ const FormWhite = () => {
 
     const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
-    const response = await fetch(`${api}/whiteList/${formData.get('eMail')}`,
-      { method: 'DELETE'}
+    const response = await fetch(`${api}/food`,
+      { method: 'PUT'}
     );
-
-    handleClose2();
   }
 
   return (
     <div>
       <div class="form-div">
         <form class="register-form" ref={form}>
-          <h1>Whitelist</h1>
+          <h1>Food</h1>
           <input
-            id="email"
+            id="foodName"
             class="form-field"
-            type="email"
-            placeholder="Email"
-            name="eMail"
+            type="text"
+            placeholder="Nombre de comida"
+            name="foodName"
+          />
+          <input
+            id="foodDesc"
+            class="form-field"
+            type="text"
+            placeholder="Descripción de comida"
+            name="foodDesc"
+          />
+          <input
+            id="lipidos"
+            class="form-field"
+            type="number"
+            placeholder="lipidos"
+            name="lipidos"
+          />
+          <input
+            id="carbohidratos"
+            class="form-field"
+            type="number"
+            placeholder="carbohidratos"
+            name="carbohidratos"
+          />
+          <input
+            id="proteinas"
+            class="form-field"
+            type="number"
+            placeholder="proteinas"
+            name="proteinas "
+          />
+          <input
+            id="measure"
+            class="form-field"
+            type="text"
+            placeholder="measure "
+            name="measure"
+          />
+          <input
+            id="stock"
+            class="form-field"
+            type="number"
+            placeholder="stock"
+            name="stock"
+          />
+          <input
+            id="expiration "
+            class="form-field"
+            type="number"
+            placeholder="expiration "
+            name="expiration "
           />
           <Button variant="primary" type="button" onClick={handleSubmit}>Agregar</Button><br></br>
-          <Button variant="primary" type="button" onClick={handleShow1}>Borrar</Button>
+          <Button variant="primary" type="button" onClick={handleSubmit2}>Modificar</Button>
         </form>
 
         {/* Modal Agregar */}
@@ -85,24 +132,8 @@ const FormWhite = () => {
           <Button variant="secondary" onClick={handleClose1}>
             No
           </Button>
-          <Button variant="primary" onClick={handleShow2}>
+          <Button variant="primary" onClick={handleClose1}>
             Sí
-          </Button> 
-        </Modal.Footer>
-      </Modal>
-
-      {/* Modal borrar 2 */}
-      <Modal show={show2} onHide={handleClose2}>
-        <Modal.Header closeButton>
-          <Modal.Title>Eliminar Administrador</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>¿¿Segurisimo??</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose2}>
-            No
-          </Button>
-          <Button variant="primary" onClick={handleSubmit2}>
-            Segurisimo
           </Button> 
         </Modal.Footer>
       </Modal>
@@ -112,4 +143,4 @@ const FormWhite = () => {
   );
 };
 
-export default FormWhite;
+export default FormFood;

@@ -3,7 +3,6 @@ import BarChart from '../components/BarChart';
 import LineChart from '../components/LineChart';
 import PieChart from '../components/PieChart';
 import { UserData } from '../components/Data'
-import './detallado.css';
 
 const Detallado = () => {
 

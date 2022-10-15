@@ -35,12 +35,12 @@ const Navbar = () => {
                     <NavLink to="/insumos" activeStyle>
                         Insumos
                     </NavLink>
-                    <NavLink to="/reporte-detallado" activeStyle>
+                    {/* <NavLink to="/reporte-detallado" activeStyle>
                         Reporte Detallado
-                    </NavLink>
-                    <NavLink to="/reporte-detallado" activeStyle>
+                    </NavLink> */}
+                    {/* <NavLink to="/reporte-detallado" activeStyle>
                         Pruebas
-                    </NavLink>
+                    </NavLink> */}
                     <Dropdown options={options} value={section} placeholder="Select an option" onChange={({ value }) => {
                         setSection(value);
                         console.log(value);

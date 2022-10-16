@@ -34,7 +34,7 @@ const Ubicacion = () => {
     setUbicacion({lat: data[0].lat, lng: data[0].lon})
   }
 
-  const containerStyle = { //PREGUNTAR A HUGO
+  const containerStyle = { 
     width: '100%',
     height: '100vh',
     alignContent: 'center'

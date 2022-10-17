@@ -4,8 +4,9 @@
     width: 360px;
     background-color: white;
     text-align: center;
-    margin: auto;
+    /* margin: auto; */
     margin-top: 10px;
+    margin-bottom: 10px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     padding: 10px;
 }

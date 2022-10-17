@@ -4,12 +4,13 @@ import './FormDB.css';
 import jwt from 'jwt-decode'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useToken } from '../../TokenContext';
 
 
 const FormWhite = () => {
   const form = useRef();
   const navigate = useNavigate();
-  const token = localStorage.getItem('token')
+  const { token } = useToken();
   const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
   const [whiteList, setWhitelist] = useState({ adminName: "" });
@@ -131,7 +132,7 @@ const FormWhite = () => {
           </Modal>
 
         </div>
-        <div style={{padding: "10px"}}>
+        <div style={{ padding: "10px" }}>
           <table style={{
             border: "solid 1px black",
             display: "block",
@@ -145,11 +146,11 @@ const FormWhite = () => {
             </thead>
             <tbody>
               {
-              whitelists.map(whiteList => (
-                <tr >
-                  <td>{whiteList.eMail}</td>
-                </tr>
-              ))}
+                whitelists.map(whiteList => (
+                  <tr >
+                    <td>{whiteList.eMail}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

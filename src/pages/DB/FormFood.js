@@ -5,11 +5,12 @@ import './FormDB.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
+import { useToken } from '../../TokenContext';
 
 
 const FormFood = () => {
   const form = useRef();
-  const token = localStorage.getItem('token')
+  const { token } = useToken();
   const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
   const [food, setFood] = useState({ adminName: "" });
@@ -174,7 +175,7 @@ const FormFood = () => {
             </Modal.Footer>
           </Modal>
         </div>
-        <div style={{padding: "10px"}}>
+        <div style={{ padding: "10px" }}>
           <table style={{
             border: "solid 1px black",
             display: "block",
@@ -195,18 +196,18 @@ const FormFood = () => {
             </thead>
             <tbody>
               {
-              foods.map(food => (
-                <tr >
-                  <td>{food.foodName}</td>
-                  <td>{food.foodDesc}</td>
-                  <td>{food.lipidos}</td>
-                  <td>{food.carbohidratos}</td>
-                  <td>{food.proteinas}</td>
-                  <td>{food.measure}</td>
-                  <td>{food.stock}</td>
-                  <td>{food.expiration}</td>
-                </tr>
-              ))}
+                foods.map(food => (
+                  <tr >
+                    <td>{food.foodName}</td>
+                    <td>{food.foodDesc}</td>
+                    <td>{food.lipidos}</td>
+                    <td>{food.carbohidratos}</td>
+                    <td>{food.proteinas}</td>
+                    <td>{food.measure}</td>
+                    <td>{food.stock}</td>
+                    <td>{food.expiration}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

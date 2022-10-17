@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const FormSignup = ({ submitForm }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
     submitForm,
-    validate
+    validate,
   );
 
   return (

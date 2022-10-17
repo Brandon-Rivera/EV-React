@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import jwt from "jwt-decode";
 import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
 import './ubicacion.css'
+import { useToken } from "../TokenContext";
 
 const Ubicacion = () => {
 
@@ -11,8 +12,8 @@ const Ubicacion = () => {
   console.log(userId)
 
   const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
-
-  const [ubicacion, setUbicacion] = useState({lat: 18, lng: -99});
+  const { token } = useToken();
+  const [ubicacion, setUbicacion] = useState({ lat: 18, lng: -99 });
   // vacío, se ejecuta cada vez que renderiza el componente
   // [], se ejecuta la primera vez que renderiza el componente
   // [estado], se ejecuta solo cuando se actualice el estado, sin bucle
@@ -22,7 +23,6 @@ const Ubicacion = () => {
 
   /* Todas las funciones */
   const getUbicacion = async () => {
-    const token = localStorage.getItem('token')
     const id = jwt(token).id
     // `${api}/administrador/${id}`
     const response = await fetch(`${api}/slocationByUser/${userId[0]}`, {
@@ -31,28 +31,28 @@ const Ubicacion = () => {
       }
     })
     const data = await response.json()
-    setUbicacion({lat: data[0].lat, lng: data[0].lon})
+    setUbicacion({ lat: data[0].lat, lng: data[0].lon })
   }
 
-  const containerStyle = { 
+  const containerStyle = {
     width: '100%',
     height: '100vh',
     alignContent: 'center'
-    };
+  };
 
   return (
     <div>
-        <h2 className="titulo_mapa">Ubicación de {userId[1]}</h2>
-        <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={ubicacion}
-            zoom={17}
-          >
-          <MarkerF
-            position={ubicacion}
-          >
-          </MarkerF>
-        </GoogleMap>
+      <h2 className="titulo_mapa">Ubicación de {userId[1]}</h2>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={ubicacion}
+        zoom={17}
+      >
+        <MarkerF
+          position={ubicacion}
+        >
+        </MarkerF>
+      </GoogleMap>
 
     </div>
   )

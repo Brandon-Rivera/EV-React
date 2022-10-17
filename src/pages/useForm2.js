@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { useToken } from '../TokenContext';
 
 const useForm = (callback, validate) => {
   const [values, setValues] = useState({
@@ -9,6 +10,7 @@ const useForm = (callback, validate) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  const { setToken } = useToken();
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -38,7 +40,7 @@ const useForm = (callback, validate) => {
       .then((data) => {
         console.log('Success:', data.token);
         if (data.token !== '') {
-          localStorage.setItem('token', data.token);
+          setToken(data.token);
           navigate('/informe-general', { replace: true });
         }
       })

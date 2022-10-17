@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages';
 import General from './pages/general';
 import Insumos from './pages/insumos';
@@ -38,19 +38,28 @@ function App() {
         <Router>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/informe-general" element={<General />}></Route>
-            <Route path="/insumos" element={<Insumos />}></Route>
-            <Route path="/reporte-detallado" element={<Detallado />}></Route>
-            <Route path="/paquete" element={<Paquetes />}></Route>
-            <Route path="/registrar-sesion" element={<Form />}></Route>
-            <Route path="/iniciar-sesion" element={<Form2 />}></Route>
-            <Route path="/whitelist" element={<Whitelist />}></Route>
-            <Route path="/food" element={<Food />}></Route>
-            <Route path="/question" element={<Question />}></Route>
-            <Route path="/ubicacion" element={<Ubicacion />}></Route>
-            <Route path="/miembros" element={<Miembros />}></Route>
-            <Route path="/respuestas" element={<Respuestas />}></Route>
+            {token && <>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/informe-general" element={<General />}></Route>
+              <Route path="/insumos" element={<Insumos />}></Route>
+              <Route path="/reporte-detallado" element={<Detallado />}></Route>
+              <Route path="/paquete" element={<Paquetes />}></Route>
+              <Route path="/whitelist" element={<Whitelist />}></Route>
+              <Route path="/food" element={<Food />}></Route>
+              <Route path="/question" element={<Question />}></Route>
+              <Route path="/ubicacion" element={<Ubicacion />}></Route>
+              <Route path="/miembros" element={<Miembros />}></Route>
+              <Route path="/respuestas" element={<Respuestas />}></Route>
+              <Route path="*" element={<Navigate to="/" />}></Route>
+            </>
+            }
+            {
+              !token && <>
+                <Route path="/registrar-sesion" element={<Form />}></Route>
+                <Route path="/iniciar-sesion" element={<Form2 />}></Route>
+                <Route path="*" element={<Navigate to="/iniciar-sesion" />} />
+              </>
+            }
           </Routes>
         </Router>
       </LoadScript>

@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import jwt from "jwt-decode";
+import { useToken } from "../TokenContext";
 
 const Respuestas = () => {
 
@@ -8,21 +9,20 @@ const Respuestas = () => {
     const miembroId = location.state;
     const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api";
 
-    const [preguntas, setPreguntas] = useState({question: ""})
-    const [respuestas, setRespuestas] = useState({answer: ""})
-    
+    const [preguntas, setPreguntas] = useState({ question: "" })
+    const [respuestas, setRespuestas] = useState({ answer: "" })
+    const { token } = useToken();
 
     useEffect(() => {
         getPreguntas()
-      }, [preguntas])
+    }, [preguntas])
 
     useEffect(() => {
-      getRespuestas()
+        getRespuestas()
     }, [respuestas])
 
-    
-    const getPreguntas = async() =>{
-        const token = localStorage.getItem("token");
+
+    const getPreguntas = async () => {
         const id = jwt(token).id;
         const response = await fetch(`${api}/questions`, {
             headers: {
@@ -33,9 +33,7 @@ const Respuestas = () => {
         setPreguntas(data);
     }
 
-    const getRespuestas = async () =>{
-        const token = localStorage.getItem("token");
-        const id = jwt(token).id;
+    const getRespuestas = async () => {
         const response = await fetch(`${api}/questionanswerByTime/${miembroId[0]}`, {
             headers: {
                 "x-access-token": token,
@@ -47,15 +45,15 @@ const Respuestas = () => {
 
     var pregResArray = []
 
-    for(var i = 0; i < respuestas.length; i++){
+    for (var i = 0; i < respuestas.length; i++) {
         const pregResObject = {
             'question': preguntas[i].question,
             'answer': respuestas[i].answer
-        } 
+        }
         pregResArray.push(pregResObject)
     }
 
-    return(
+    return (
         <div style={{
             justifyContent: "center",
             alignItems: "center",
@@ -64,12 +62,12 @@ const Respuestas = () => {
             <h1 className='title'>Respuestas de {miembroId[1]}</h1>
             <br></br>
             <table style={{
-                    border: "solid 1px black",
-                    display: "block",
-                    height: "350px",
-                    overflow: "auto",
-                    width: "40%",
-                }}
+                border: "solid 1px black",
+                display: "block",
+                height: "350px",
+                overflow: "auto",
+                width: "40%",
+            }}
             >
                 <thead>
                     <tr>
@@ -79,10 +77,10 @@ const Respuestas = () => {
                 </thead>
                 <tbody>
                     {
-                        pregResArray.map((pregRes)=> (
+                        pregResArray.map((pregRes) => (
                             <tr>
-                                <td style={{top: 0, textAlign:'center'}}>{pregRes.question}</td>
-                                <td style={{top: 0, textAlign:'center'}}>{pregRes.answer}</td>
+                                <td style={{ top: 0, textAlign: 'center' }}>{pregRes.question}</td>
+                                <td style={{ top: 0, textAlign: 'center' }}>{pregRes.answer}</td>
                             </tr>
                         ))
                     }

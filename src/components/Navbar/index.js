@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import { Nav, Bars, NavMenu, NavLink, NavBtnLink } from "./NavbarElements";
 import { useNavigate } from 'react-router-dom'
 import Dropdown from 'react-dropdown';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import 'react-dropdown/style.css';
+import { useToken } from "../../TokenContext";
 
 const Navbar = () => {
-
     const navigate = useNavigate();
-
-    const logout = () => {
-        localStorage.removeItem('token');
-    };
-
-    const auth = localStorage.getItem("user");
-
     const [section, setSection] = React.useState("DB");
+    const [show, setShow] = useState(false);
+    const { token, setToken } = useToken();
+    const handleLogout = () => setToken(null);
 
     const options = [
         'Food', 'Questions', 'Whitelist'
@@ -29,35 +27,53 @@ const Navbar = () => {
                 </NavLink>
                 <Bars />
                 <NavMenu>
-                    <NavLink to="/informe-general" activeStyle>
-                        Informe General
-                    </NavLink>
-                    <NavLink to="/insumos" activeStyle>
-                        Insumos
-                    </NavLink>
-                    {/* <NavLink to="/reporte-detallado" activeStyle>
-                        Pruebas
-                    </NavLink> */}
-                    <Dropdown options={options} value={section} placeholder="Select an option" onChange={({ value }) => {
-                        setSection(value);
-                        console.log(value);
-                        switch (value) {
-                            case 'Food':
-                                navigate("/food"); break;
-                            case 'Questions':
-                                navigate("/question"); break;
-                            case 'Whitelist':
-                                navigate("/whitelist"); break;
-                        }
-                    }} />;
-                    <NavBtnLink to="/iniciar-sesion" activeStyle>
+                    {token &&
+                        <>
+                            <NavLink to="/informe-general" activeStyle>
+                                Informe General
+                            </NavLink>
+                            <NavLink to="/insumos" activeStyle>
+                                Insumos
+                            </NavLink>
+                            <Dropdown options={options} value={section} placeholder="Select an option" onChange={({ value }) => {
+                                setSection(value);
+                                console.log(value);
+                                switch (value) {
+                                    case 'Food':
+                                        navigate("/food"); break;
+                                    case 'Questions':
+                                        navigate("/question"); break;
+                                    case 'Whitelist':
+                                        navigate("/whitelist"); break;
+                                    default:
+                                        break;
+                                }
+                            }} />
+                        </>}
+                    {!token && <NavBtnLink to="/iniciar-sesion" activeStyle>
                         Iniciar sesión
                     </NavBtnLink>
-                    <NavBtnLink onClick={logout} to="/iniciar-sesion" activeStyle>
+                    }
+                    {token && <NavBtnLink onClick={() => {
+                        setShow(true);
+                        handleLogout();
+                    }} to="/iniciar-sesion" activeStyle>
                         Cerrar sesión
                     </NavBtnLink>
+                    }
                 </NavMenu>
             </Nav>
+
+            <Modal show={show} onHide={() => setShow(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Se ha cerrado la sesión</Modal.Title>
+                </Modal.Header>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShow(false)}>
+                        Cerrar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 };

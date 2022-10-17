@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import jwt from 'jwt-decode'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -13,13 +14,6 @@ const General = () => {
   // vacío, se ejecuta cada vez que renderiza el componente
   // [], se ejecuta la primera vez que renderiza el componente
   // [estado], se ejecuta solo cuando se actualice el estado, sin bucle
-  useEffect(() => {
-    if(token !== null){
-      console.log("Se ha iniciado sesión")
-    }else{
-      console.log("Se cerro sesión")
-    }
-  })
 
   useEffect(() => {
     getUsers()
@@ -59,10 +53,6 @@ const General = () => {
   }
   const famMemberss = Object.values(famMembers)
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   return (
     <div style={{ justifyContent: 'center', alignItems: 'center', height: '150vh' }}>
       <h1 className='title'>Informe general</h1>
@@ -96,19 +86,6 @@ const General = () => {
             ))}
         </tbody>
       </table>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Administrador agregado</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, agregaste a un Administrador!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
     </div>
   )
 }

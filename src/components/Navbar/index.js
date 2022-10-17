@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import { Nav, Bars, NavMenu, NavLink, NavBtnLink } from "./NavbarElements";
 import { useNavigate } from 'react-router-dom'
 import Dropdown from 'react-dropdown';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import 'react-dropdown/style.css';
 
 const Navbar = () => {
 
     const navigate = useNavigate();
-
-    const logout = () => {
-        localStorage.removeItem('token');
-    };
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => {setShow(true); localStorage.removeItem('token');}
 
     const auth = localStorage.getItem("user");
 
@@ -48,16 +49,29 @@ const Navbar = () => {
                                 navigate("/question"); break;
                             case 'Whitelist':
                                 navigate("/whitelist"); break;
+                            default:
+                                break;
                         }
                     }} />;
                     <NavBtnLink to="/iniciar-sesion" activeStyle>
                         Iniciar sesión
                     </NavBtnLink>
-                    <NavBtnLink onClick={logout} to="/iniciar-sesion" activeStyle>
+                    <NavBtnLink onClick={handleShow} to="/iniciar-sesion" activeStyle>
                         Cerrar sesión
                     </NavBtnLink>
                 </NavMenu>
             </Nav>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Se ha cerrado la sesión</Modal.Title>
+                </Modal.Header>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Cerrar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 };

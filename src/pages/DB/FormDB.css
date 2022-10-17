@@ -4,9 +4,21 @@
     width: 360px;
     background-color: white;
     text-align: center;
-    /* margin: auto; */
     margin-top: 10px;
     margin-bottom: 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    padding: 10px;
+}
+
+.form-divW {
+    width: 360px;
+    height: 270px;
+    background-color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    /* margin-bottom: 50%; */
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     padding: 10px;
 }

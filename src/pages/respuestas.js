@@ -35,7 +35,6 @@ const Respuestas = () => {
 
     const getRespuestas = async () =>{
         const token = localStorage.getItem("token");
-        const id = jwt(token).id;
         const response = await fetch(`${api}/questionanswerByTime/${miembroId[0]}`, {
             headers: {
                 "x-access-token": token,

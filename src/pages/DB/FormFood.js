@@ -24,11 +24,15 @@ const FormFood = () => {
     const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
     const response = await fetch(`${api}/food`,
-      { method: 'POST', 
+      {
+        method: 'POST',
         headers: {
-        'x-access-token': token
-        }, body: formData }
+          'x-access-token': token
+        }, body: formData
+      }
     );
+
+    console.log(formData)
 
     handleShow();
   }
@@ -40,8 +44,17 @@ const FormFood = () => {
     const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
     const response = await fetch(`${api}/food`,
-      { method: 'PUT'}
+      {
+        method: 'PUT',
+        headers: {
+          'x-access-token': token
+        }, body: formData
+      }
     );
+
+    console.log(formData)
+
+    handleShow1();
   }
 
   return (
@@ -82,13 +95,13 @@ const FormFood = () => {
             class="form-field"
             type="number"
             placeholder="proteinas"
-            name="proteinas "
+            name="proteinas"
           />
           <input
             id="measure"
             class="form-field"
             type="text"
-            placeholder="measure "
+            placeholder="measure"
             name="measure"
           />
           <input
@@ -99,11 +112,11 @@ const FormFood = () => {
             name="stock"
           />
           <input
-            id="expiration "
+            id="expiration"
             class="form-field"
             type="number"
-            placeholder="expiration "
-            name="expiration "
+            placeholder="expiration"
+            name="expiration"
           />
           <Button variant="primary" type="button" onClick={handleSubmit}>Agregar</Button><br></br>
           <Button variant="primary" type="button" onClick={handleSubmit2}>Modificar</Button>
@@ -111,32 +124,32 @@ const FormFood = () => {
 
         {/* Modal Agregar */}
         <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Administrador agregado</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, agregaste a un Administrador!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-        </Modal.Footer>
-      </Modal>
+          <Modal.Header closeButton>
+            <Modal.Title>Comida agregada</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, agregaste a un Administrador!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
 
-      {/* Modal borrar 1 */}
-      <Modal show={show1} onHide={handleClose1}>
-        <Modal.Header closeButton>
-          <Modal.Title>Eliminar Administrador</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Estas a punto de eliminar un admin. ¿Estás seguro?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose1}>
-            No
-          </Button>
-          <Button variant="primary" onClick={handleClose1}>
-            Sí
-          </Button> 
-        </Modal.Footer>
-      </Modal>
+        {/* Modal Modificar */}
+        <Modal show={show1} onHide={handleClose1}>
+          <Modal.Header closeButton>
+            <Modal.Title>Comida modificada</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Estas a punto de eliminar un admin. ¿Estás seguro?</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose1}>
+              No
+            </Button>
+            <Button variant="primary" onClick={handleClose1}>
+              Sí
+            </Button>
+          </Modal.Footer>
+        </Modal>
 
       </div>
     </div>

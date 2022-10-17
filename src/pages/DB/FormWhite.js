@@ -29,7 +29,7 @@ const FormWhite = () => {
     const response = await fetch(`${api}/whiteList`,
       { method: 'POST', body: formData }
     );
-
+    console.log(formData)
     handleShow();
   }
 

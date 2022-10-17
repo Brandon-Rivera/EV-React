@@ -24,6 +24,10 @@ export const NavLink = styled(Link)`
     &.active {
         color: #cf142b;
     }
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        color: #cf142b;
+    }
 `;
 
 export const Bars = styled(FaBars)`

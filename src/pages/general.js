@@ -18,11 +18,11 @@ const General = () => {
 
   useEffect(() => {
     getUsers()
-  }, [users])
+  }, [])
 
   useEffect(() => {
     getFamMembers()
-  }, [famMembers])
+  }, [])
 
   /* Todas las funciones */
   const getUsers = async () => {
@@ -59,7 +59,7 @@ const General = () => {
       <br></br>
       <table style={{
         border: "solid 1px black",
-        display: "block",
+        display: 'block',
         height: "350px",
         overflow: "auto",
         width: "50%"
@@ -77,11 +77,11 @@ const General = () => {
           {
             userss.map(user => (
               <tr >
-                <td>{user.userName}</td>
-                <td>{user.eMail}</td>
-                <td>{user.phoneNumber}</td>
-                <td>4</td>
-                <td>{user.folio}</td>
+                <td style={{top: 0, textAlign:'center'}}>{user.userName}</td>
+                <td style={{top: 0, textAlign:'center'}}>{user.eMail}</td>
+                <td style={{top: 0, textAlign:'center'}}>{user.phoneNumber}</td>
+                <td style={{top: 0, textAlign:'center'}}>4</td>
+                <td style={{top: 0, textAlign:'center'}}>{user.folio}</td>
               </tr>
             ))}
         </tbody>

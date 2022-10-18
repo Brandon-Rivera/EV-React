@@ -13,7 +13,7 @@ const Insumos = () => {
   // [estado], se ejecuta solo cuando se actualice el estado, sin bucle
   useEffect(() => {
     getUsers()
-  }, [users])
+  }, [])
   const { token } = useToken();
 
   /* Todas las funciones */

@@ -52,7 +52,7 @@ const Insumos = () => {
             userss.map(user => (
               <tr key={user.id}>
                 <td style={{ top: 0, textAlign: 'center' }}>{user.userName}</td>
-                <td style={{ top: 0, textAlign: 'center' }}><Link to="/paquete"><button><img src="assets/Plato.png" alt="" width="60px" height="60px" /></button></Link></td>
+                <td style={{ top: 0, textAlign: 'center' }}><Link to="/paquete" state={[user.id, user.userName]}><button><img src="assets/Plato.png" alt="" width="60px" height="60px" /></button></Link></td>
                 <td style={{ top: 0, textAlign: 'center' }}><Link to="/ubicacion" state={[user.id, user.userName]}><button><img src="assets/Mundo.png" alt="" width="60px" height="60px" /></button></Link></td>
                 <td style={{ top: 0, textAlign: 'center' }}><Link to="/miembros" state={[user.id, user.userName]}><button><img src="assets/family.png" alt="" width="60px" height="60px" /></button></Link></td>
               </tr>

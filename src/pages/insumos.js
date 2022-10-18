@@ -37,7 +37,6 @@ const Insumos = () => {
       <ListGroup>
         <ListGroup.Item variant="dark" style={{fontSize: "30px"}}>Insumos</ListGroup.Item>
       </ListGroup>
-      {/* <h1 className='title'>Insumos</h1> */}
       <br></br>
       <Table striped bordered hover variant="dark">
         <thead>

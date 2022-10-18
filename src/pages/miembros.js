@@ -3,6 +3,7 @@ import { useLocation, Link } from "react-router-dom";
 import jwt from "jwt-decode";
 import "./miembros.css";
 import { useToken } from "../TokenContext";
+import { ListGroup, Table } from 'react-bootstrap';
 
 const Miembros = () => {
     const location = useLocation();
@@ -31,24 +32,13 @@ const Miembros = () => {
     const miembross = Object.values(miembros);
 
     return (
-        <div
-            style={{
-                justifyContent: "center",
-                alignItems: "center",
-                height: "150vh",
-            }}
-        >
-            <h1 className="title">Miembros de familia de {userId[1]}</h1>
+        <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '640px', alignItems: 'center', margin: 'auto' }}>
             <br></br>
-            <table
-                style={{
-                    border: "solid 1px black",
-                    display: "block",
-                    height: "350px",
-                    overflow: "auto",
-                    width: "40%",
-                }}
-            >
+            <ListGroup>
+                <ListGroup.Item variant="dark" style={{ fontSize: "30px" }}>Miembros de familia de {userId[1]}</ListGroup.Item>
+            </ListGroup>
+            <br></br>
+            <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
                         <th style={{ position: "sticky", top: 0, textAlign: 'center' }}>Nombre(s)</th>
@@ -79,7 +69,7 @@ const Miembros = () => {
                         </tr>
                     ))}
                 </tbody>
-            </table>
+            </Table>
         </div>
     );
 };

@@ -12,7 +12,7 @@ const Form = () => {
   return (
     <>
       <div className='form-container'>
-        <span className='close-btn'>x</span>
+        {isSubmitted && <span className='close-btn' onClick={() => setIsSubmitted(false)}>x</span>}
         <div className='form-content-left'>
           <img className='form-img' src='/assets/BAC3.png' alt='spaceship' />
         </div>

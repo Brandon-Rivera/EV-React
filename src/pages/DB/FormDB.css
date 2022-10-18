@@ -38,35 +38,35 @@
 }
 
 .form-field {
-margin: 10px 0 10px 0;
-padding: 15px;
-font-size: 16px;
-border: 0;
-font-family: "Roboto", sans-serif;
+    margin: 10px 0 10px 0;
+    padding: 15px;
+    font-size: 16px;
+    border: 0;
+    font-family: "Roboto", sans-serif;
 }
 
 span {
-font-family: "Roboto", sans-serif;
-font-size: 14px;
-color: red;
-margin-bottom: 15px;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    color: red;
+    margin-bottom: 15px;
 }
 
 input {
-background: #f2f2f2;
+    background: #f2f2f2;
 }
 
 .error {
-border-style: solid;
-border: 2px solid #ffa4a4;
+    border-style: solid;
+    border: 2px solid #ffa4a4;
 }
 
 button {
-background: #4caf50;
-color: white;
-cursor: pointer;
+    background: #4caf50;
+    color: white;
+    cursor: pointer;
 }
 
 button:disabled {
-cursor: default;
+    cursor: default;
 }

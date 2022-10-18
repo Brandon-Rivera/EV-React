@@ -4,40 +4,63 @@ import './FormDB.css';
 import jwt from 'jwt-decode'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import DropdownItem from 'react-bootstrap/esm/DropdownItem';
-import { Dropdown, DropdownButton } from 'react-bootstrap';
+import Dropdown from 'react-dropdown';
 
-const Question = () => {
+const FormQuestion = () => {
 
   const navigate = useNavigate();
+  const form = useRef();
 
-  const [section, setSection] = React.useState("DB");
+  const [section, setSection] = useState("Tipo de pregunta");
 
   const options = [
-    'Food', 'Questions', 'Whitelist'
+    'Respuesta corta', 'Respuesta larga', 'Opción múltiple (4 opciones)', 'Opción múltiple (5 opciones)',
+    'Opción múltiple (6 opciones)', 'Opción múltiple (8 opciones)'
   ];
 
   return (
     <>
       <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
         <div class="form-div">
-          {/* ref={form} */}
-          <form class="register-form">
+          <form class="register-form" ref={form}>
             <h1>Question</h1>
-            <Dropdown options={options} value={section} placeholder="Select an option" onChange={({ value }) => {
+            <Dropdown options={options} value={section} name="questionType" placeholder="Select an option" onChange={({ value }) => {
               setSection(value);
               console.log(value);
               switch (value) {
-                case 'Food':
+                case 'Respuesta corta':
                   navigate("/food"); break;
-                case 'Questions':
+                case 'Respuesta larga':
                   navigate("/question"); break;
-                case 'Whitelist':
+                case 'Opción múltiple (4 opciones)':
+                  document.getElementById("options").innerHTML = `
+                  <h6>Opción 1</h6>
+                  <input
+                  id="optionName"
+                  class="form-field"
+                  type="text"
+                  placeholder="Nombre de opción"
+                  name="optionName"
+                  />
+                  <input
+                  id="optionValue"
+                  class="form-field"
+                  type="text"
+                  placeholder="Valor de opción"
+                  name="optionValue"
+                  />
+                  `;
+                  break;
+                case 'Opción múltiple (5 opciones)':
+                  navigate("/whitelist"); break;
+                case 'Opción múltiple (6 opciones)':
+                  navigate("/whitelist"); break;
+                case 'Opción múltiple (8 opciones)':
                   navigate("/whitelist"); break;
                 default:
                   break;
               }
-            }} />;
+            }} />
             <input
               id="question"
               class="form-field"
@@ -52,41 +75,22 @@ const Question = () => {
               placeholder="Descripción de la pregunta"
               name="questionDescription"
             />
+            <label for="isActive">Activo:</label>
             <input
-              id="carbohidratos"
+              id="isActive"
+              class="form-field"
+              type="checkbox"
+              placeholder="isActive"
+              name="isActive"
+            />
+            <input
+              id="qOptions"
               class="form-field"
               type="number"
-              placeholder="carbohidratos"
-              name="carbohidratos"
+              placeholder="Número de opciones"
+              name="qOptions"
             />
-            <input
-              id="proteinas"
-              class="form-field"
-              type="number"
-              placeholder="proteinas"
-              name="proteinas"
-            />
-            <input
-              id="measure"
-              class="form-field"
-              type="text"
-              placeholder="measure"
-              name="measure"
-            />
-            <input
-              id="stock"
-              class="form-field"
-              type="number"
-              placeholder="stock"
-              name="stock"
-            />
-            <input
-              id="expiration"
-              class="form-field"
-              type="number"
-              placeholder="expiration"
-              name="expiration"
-            />
+            <div id="options"></div>
             <Button variant="primary" type="button" >Agregar</Button><br></br>
             <Button variant="primary" type="button" >Modificar</Button>
           </form>
@@ -132,4 +136,4 @@ const Question = () => {
   )
 }
 
-export default Question
+export default FormQuestion

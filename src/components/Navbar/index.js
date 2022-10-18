@@ -23,7 +23,7 @@ const Navbar = () => {
             <Nav>
                 <NavLink to="/">
                     <img src="assets/BAMX.png" alt="" width="60px" height="60px" />
-                    <h1>&nbsp;BAMX</h1>
+                    <h1>BAMX</h1>
                 </NavLink>
                 <Bars />
                 <NavMenu>

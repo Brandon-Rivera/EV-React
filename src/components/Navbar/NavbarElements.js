@@ -14,11 +14,13 @@ export const Nav = styled.nav`
 export const NavLink = styled(Link)`
     color: #fff;
     display: flex;
+    flex-direction: row;
     align-items: center;
     text-decoration: none;
     text-align: center;
     padding: 0 1rem;
     height: 100%;
+    gap: 20px;
     cursor: pointer;
 
     &.active {
@@ -27,6 +29,9 @@ export const NavLink = styled(Link)`
     &:hover {
         transition: all 0.2s ease-in-out;
         color: #cf142b;
+    }
+    h1 {
+        margin: 0;
     }
 `;
 

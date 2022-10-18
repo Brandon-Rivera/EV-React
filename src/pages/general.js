@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import './general.css';
 import { useToken } from '../TokenContext';
+import { ListGroup, Table } from 'react-bootstrap';
 
 const General = () => {
   const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
@@ -54,16 +55,13 @@ const General = () => {
   const famMemberss = Object.values(famMembers)
 
   return (
-    <div style={{ justifyContent: 'center', alignItems: 'center', height: '150vh' }}>
-      <h1 className='title'>Informe general</h1>
+    <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '640px', alignItems: 'center', margin: 'auto' }}>
+      {/* <h1 className='title'>Informe general</h1> */}
       <br></br>
-      <table style={{
-        border: "solid 1px black",
-        display: 'block',
-        height: "350px",
-        overflow: "auto",
-        width: "50%"
-      }}>
+      <ListGroup>
+        <ListGroup.Item variant="dark" style={{fontSize: "30px"}}>Informe general</ListGroup.Item>
+      </ListGroup><br></br>
+      <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>Beneficiario</th>
@@ -77,15 +75,15 @@ const General = () => {
           {
             userss.map(user => (
               <tr >
-                <td style={{top: 0, textAlign:'center'}}>{user.userName}</td>
-                <td style={{top: 0, textAlign:'center'}}>{user.eMail}</td>
-                <td style={{top: 0, textAlign:'center'}}>{user.phoneNumber}</td>
-                <td style={{top: 0, textAlign:'center'}}>4</td>
-                <td style={{top: 0, textAlign:'center'}}>{user.folio}</td>
+                <td style={{ top: 0, textAlign: 'center' }}>{user.userName}</td>
+                <td style={{ top: 0, textAlign: 'center' }}>{user.eMail}</td>
+                <td style={{ top: 0, textAlign: 'center' }}>{user.phoneNumber}</td>
+                <td style={{ top: 0, textAlign: 'center' }}>4</td>
+                <td style={{ top: 0, textAlign: 'center' }}>{user.folio}</td>
               </tr>
             ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   )
 }

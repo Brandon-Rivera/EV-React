@@ -15,7 +15,7 @@ const Miembros = () => {
 
     useEffect(() => {
         getMiembros();
-    }, [miembros]);
+    }, []);
 
     const getMiembros = async () => {
         const id = jwt(token).id;

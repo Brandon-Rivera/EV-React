@@ -18,11 +18,11 @@ const General = () => {
 
   useEffect(() => {
     getUsers()
-  }, [users])
+  }, [])
 
   useEffect(() => {
     getFamMembers()
-  }, [famMembers])
+  }, [])
 
   /* Todas las funciones */
   const getUsers = async () => {

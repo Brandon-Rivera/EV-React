@@ -5,6 +5,7 @@ import jwt from 'jwt-decode'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Dropdown from 'react-dropdown';
+import options from '../../components/options';
 
 const FormQuestion = () => {
 
@@ -12,6 +13,7 @@ const FormQuestion = () => {
   const form = useRef();
 
   const [section, setSection] = useState("Tipo de pregunta");
+  const [opcion, setOpcion] = useState("")
 
   const options = [
     'Respuesta corta', 'Respuesta larga', 'Opción múltiple (4 opciones)', 'Opción múltiple (5 opciones)',
@@ -33,6 +35,7 @@ const FormQuestion = () => {
                 case 'Respuesta larga':
                   navigate("/question"); break;
                 case 'Opción múltiple (4 opciones)':
+                  options.map((option) => option * 2)
                   document.getElementById("options").innerHTML = `
                   <h6>Opción 1</h6>
                   <input
@@ -90,7 +93,10 @@ const FormQuestion = () => {
               placeholder="Número de opciones"
               name="qOptions"
             />
-            <div id="options"></div>
+            <div id="options">
+              {/* {siEsElCaso && ( .map ...)} */}
+              {options.map((option) => option * 2)}
+            </div>
             <Button variant="primary" type="button" >Agregar</Button><br></br>
             <Button variant="primary" type="button" >Modificar</Button>
           </form>

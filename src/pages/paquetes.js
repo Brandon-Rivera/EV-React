@@ -192,18 +192,21 @@ const Paquetes = () => {
                 <td className="lateral-header" style={{ top: 0, textAlign: "center" }}>Carbohidratos</td>
                 <td>
                   <StatChart dataA={pacFood.carbs} dataB={200 - pacFood.carbs} />
+                  <h6 style = {{textAlign: 'center'}}>{pacFood.carbs}/200</h6>
                 </td>
               </tr>
               <tr>
                 <td className="lateral-header" style={{ top: 0, textAlign: "center" }}>Lipidos</td>
                 <td>
                   <StatChart dataA={pacFood.lipidos} dataB={200 - pacFood.lipidos} />
+                  <h6 style = {{textAlign: 'center'}}>{pacFood.lipidos}/200</h6>
                 </td>
               </tr>
               <tr>
                 <td className="lateral-header" style={{ top: 0, textAlign: "center" }}>Proteinas</td>
                 <td>
                   <StatChart dataA={pacFood.prots} dataB={200 - pacFood.prots} />
+                  <h6 style = {{textAlign: 'center'}}>{pacFood.prots}/200</h6>
                 </td>
               </tr>
               <tr>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const options = () => {
+const Options = () => {
     return (
         <div>
             <h6>Opción</h6>
@@ -22,4 +22,4 @@ const options = () => {
     )
 }
 
-export default options
+export default Options

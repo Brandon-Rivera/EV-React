@@ -189,19 +189,19 @@ const Paquetes = () => {
           >
             <tbody>
               <tr>
-                <td className="lateral-header">Carbohidratos</td>
+                <td className="lateral-header" style={{ top: 0, textAlign: "center" }}>Carbohidratos</td>
                 <td>
                   <StatChart dataA={pacFood.carbs} dataB={200 - pacFood.carbs} />
                 </td>
               </tr>
               <tr>
-                <td className="lateral-header">Lipidos</td>
+                <td className="lateral-header" style={{ top: 0, textAlign: "center" }}>Lipidos</td>
                 <td>
                   <StatChart dataA={pacFood.lipidos} dataB={200 - pacFood.lipidos} />
                 </td>
               </tr>
               <tr>
-                <td className="lateral-header">Proteinas</td>
+                <td className="lateral-header" style={{ top: 0, textAlign: "center" }}>Proteinas</td>
                 <td>
                   <StatChart dataA={pacFood.prots} dataB={200 - pacFood.prots} />
                 </td>

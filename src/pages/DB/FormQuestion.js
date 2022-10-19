@@ -19,9 +19,9 @@ const FormQuestion = () => {
   const [option, setOption] = useState("")
 
   const options = [
-    {value: '', label: 'Respuesta corta'}, {value: '', label:'Respuesta larga'}, 
-    {value: '4', label:'Opción múltiple (4 opciones)'}, {value: '5', label:'Opción múltiple (5 opciones)'},
-    {value: '6', label:'Opción múltiple (6 opciones)'}, {value: '8', label:'Opción múltiple (8 opciones)'}
+    { value: '', label: 'Respuesta corta' }, { value: '', label: 'Respuesta larga' },
+    { value: '4', label: 'Opción múltiple (4 opciones)' }, { value: '5', label: 'Opción múltiple (5 opciones)' },
+    { value: '6', label: 'Opción múltiple (6 opciones)' }, { value: '8', label: 'Opción múltiple (8 opciones)' }
   ];
 
   const [values, setValues] = useState({
@@ -44,7 +44,7 @@ const FormQuestion = () => {
     console.log('valores:', values);
 
     const response = fetch(`${api}/questions`,
-    //const response = fetch(`http://localhost:3001/api/questions`,
+      //const response = fetch(`http://localhost:3001/api/questions`,
       {
         method: 'POST',
         headers: {
@@ -61,21 +61,31 @@ const FormQuestion = () => {
         console.log('Success:', data_);
         const data = new FormData(form1.current)
         const names = data.getAll('optionName')
-        const vals = data.getAll('optionValue')
+        const vals = Number(data.getAll('optionValue'))
         console.log(names.length)
         console.log(vals)
 
-        let opcion = { }
-        for(let i = 0; i<names.length; i++)
-        {
-            opcion = { idQuestions: data_.insertId, optionName: names[i], optionValue: vals[i]}
-            console.log(opcion)
+        let opcion = {}
+        for (let i = 0; i < names.length; i++) {
+          opcion = { idQuestions: data_.insertId, optionName: names[i], optionValue: vals[i] }
+          console.log(opcion)
+          const response2 = fetch(`${api}/questionsoptions`,
+            //const response = fetch(`http://localhost:3001/api/questions`,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': token
+                //'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOiJlbW1hIiwiaWF0IjoxNjY2MTUwODYxLCJleHAiOjE2NjYxNTgwNjF9.XvDTkNVm-LbFLBMBfo4gVVCgKWJYr26TaOedI8P5gt4'
+              },
+              body: JSON.stringify(opcion),
+            })
         }
       })
       .catch((error) => {
         console.error('Error:', error);
       });
-      
+
   };
 
   return (
@@ -84,12 +94,12 @@ const FormQuestion = () => {
         <div class="form-div">
           <form class="register-form" ref={form1} onSubmit={handleSubmit}>
             <h1>Question</h1>
-            <Dropdown options={options} value={section} name="questionType" placeholder="Select an option" onChange={({value}) => {
+            <Dropdown options={options} value={section} name="questionType" placeholder="Select an option" onChange={({ value }) => {
               setValues({
                 ...values,
                 questionType: Number(value)
               })
-              setOption(value)         
+              setOption(value)
             }} />
             <input
               id="question"

@@ -74,20 +74,40 @@ const Paquetes = () => {
 
   var pacFood = useMemo(() => {
     if (!paquetes || !food) {
-      return [];
+      return {
+        arr: [],
+        lipidos: 0,
+        carbs: 0,
+        prots: 0,
+      };
     }
-    const arr = [];
 
+    const arr = [];
+    let lipidos = 0;
+    let carbs = 0;
+    let prots = 0;
     for (var i = 0; i < paquetes.length; i++) {
       for (var j = 0; j < food.length; j++) {
         if (food[j].id === paquetes[i].idFood) {
           food[j].quantity = paquetes[i].quantity;
           arr.push(food[j]);
+
+          lipidos += food[j].lipidos * paquetes[i].quantity;
+          carbs += food[j].carbohidratos * paquetes[i].quantity;
+          prots += food[j].proteinas * paquetes[i].quantity;
+
         }
       }
     }
-    return arr;
+
+    return {
+      arr,
+      lipidos,
+      carbs,
+      prots,
+    };
   }, [paquetes, food]);
+
 
   function openImg() {
     console.log("Funcion de la imagen :D");
@@ -96,7 +116,7 @@ const Paquetes = () => {
   return (
     <>
       <div>
-        <h1 className="title">paquetes</h1>
+        <h1 className="title">Paquete de {userId[1]}</h1>
         <br />
       </div>
       <div
@@ -126,9 +146,8 @@ const Paquetes = () => {
               </tr>
             </thead>
             <tbody>
-              {pacFood.map((pac) => (
-                <>
-                  <tr>
+              {pacFood.arr.map((pac) => (
+                  <tr key={pac.id}>
                     <td style = {{ top: 0, textAlign: "center" }}>{pac.foodName}</td>
                     <td style = {{ top: 0, textAlign: "center" }}>{pac.measure}</td>
                     <td style = {{ top: 0, textAlign: "center" }}>{pac.quantity}</td>
@@ -153,7 +172,6 @@ const Paquetes = () => {
                       </button>
                     </td>
                   </tr>
-                </>
               ))}
             </tbody>
           </table>
@@ -173,19 +191,19 @@ const Paquetes = () => {
               <tr>
                 <td className="lateral-header">Carbohidratos</td>
                 <td>
-                  <StatChart dataA={7000} dataB={8000 - 7000} />
+                  <StatChart dataA={pacFood.carbs} dataB={200 - pacFood.carbs} />
                 </td>
               </tr>
               <tr>
                 <td className="lateral-header">Lipidos</td>
                 <td>
-                  <StatChart dataA={200} dataB={700 - 200} />
+                  <StatChart dataA={pacFood.lipidos} dataB={200 - pacFood.lipidos} />
                 </td>
               </tr>
               <tr>
                 <td className="lateral-header">Proteinas</td>
                 <td>
-                  <StatChart dataA={400} dataB={500 - 400} />
+                  <StatChart dataA={pacFood.prots} dataB={200 - pacFood.prots} />
                 </td>
               </tr>
               <tr>

@@ -6,25 +6,25 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Dropdown from 'react-dropdown';
 import { useToken } from '../../TokenContext';
-import OptionForm from '../../components/options';
+import OptionForm from '../../components/Options';
 
 const FormQuestion = () => {
 
   const navigate = useNavigate();
-  const form = useRef();
+  const form1 = useRef(null);
   const { token } = useToken();
   const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
   const [section, setSection] = useState("Tipo de pregunta");
-  const [option, setOpcion] = useState("")
+  const [option, setOption] = useState("")
 
   const options = [
-    'Respuesta corta', 'Respuesta larga', 'Opción múltiple (4 opciones)', 'Opción múltiple (5 opciones)',
-    'Opción múltiple (6 opciones)', 'Opción múltiple (8 opciones)'
+    {value: '', label: 'Respuesta corta'}, {value: '', label:'Respuesta larga'}, 
+    {value: '4', label:'Opción múltiple (4 opciones)'}, {value: '5', label:'Opción múltiple (5 opciones)'},
+    {value: '6', label:'Opción múltiple (6 opciones)'}, {value: '8', label:'Opción múltiple (8 opciones)'}
   ];
 
   const [values, setValues] = useState({
-    questionType: 0,
     question: '',
     questionDescription: '',
     qOptions: 0
@@ -44,54 +44,52 @@ const FormQuestion = () => {
     console.log('valores:', values);
 
     const response = fetch(`${api}/questions`,
+    //const response = fetch(`http://localhost:3001/api/questions`,
       {
         method: 'POST',
         headers: {
+          'Content-Type': 'application/json',
           'x-access-token': token
+          //'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOiJlbW1hIiwiaWF0IjoxNjY2MTUwODYxLCJleHAiOjE2NjYxNTgwNjF9.XvDTkNVm-LbFLBMBfo4gVVCgKWJYr26TaOedI8P5gt4'
         },
-        body: values,
+        body: JSON.stringify(values),
       })
       .then((response) => {
         return response.json()
       })
-      .then((data) => {
-        console.log('Success:', data.token);
+      .then((data_) => {
+        console.log('Success:', data_);
+        const data = new FormData(form1.current)
+        const names = data.getAll('optionName')
+        const vals = data.getAll('optionValue')
+        console.log(names.length)
+        console.log(vals)
+
+        let opcion = { }
+        for(let i = 0; i<names.length; i++)
+        {
+            opcion = { idQuestions: data_.insertId, optionName: names[i], optionValue: vals[i]}
+            console.log(opcion)
+        }
       })
       .catch((error) => {
         console.error('Error:', error);
       });
+      
   };
 
   return (
     <>
       <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
         <div class="form-div">
-          <form class="register-form" onSubmit={handleSubmit}>
+          <form class="register-form" ref={form1} onSubmit={handleSubmit}>
             <h1>Question</h1>
-            <Dropdown options={options} value={section} name="questionType" placeholder="Select an option" onChange={({ value }) => {
-              setSection(value);
-              switch (value) {
-                case 'Respuesta corta':
-                  setOpcion("");
-                  setValues(previous => ({
-                    ...previous,
-                    questionType: 1,
-                  }));
-                  break;
-                case 'Respuesta larga':
-                  setOpcion(""); break;
-                case 'Opción múltiple (4 opciones)':
-                  setOpcion("4");
-                  break;
-                case 'Opción múltiple (5 opciones)':
-                  setOpcion("5"); break;
-                case 'Opción múltiple (6 opciones)':
-                  setOpcion("6"); break;
-                case 'Opción múltiple (8 opciones)':
-                  setOpcion("8"); break;
-                default:
-                  break;
-              }
+            <Dropdown options={options} value={section} name="questionType" placeholder="Select an option" onChange={({value}) => {
+              setValues({
+                ...values,
+                questionType: Number(value)
+              })
+              setOption(value)         
             }} />
             <input
               id="question"

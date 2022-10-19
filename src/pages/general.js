@@ -64,11 +64,11 @@ const General = () => {
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>Beneficiario</th>
-            <th>Correo</th>
-            <th>Teléfono</th>
-            <th>Número de integrantes</th>
-            <th>Folio</th>
+            <th style={{ top: 0, textAlign: 'center' }}>Beneficiario</th>
+            <th style={{ top: 0, textAlign: 'center' }}>Correo</th>
+            <th style={{ top: 0, textAlign: 'center' }}>Teléfono</th>
+            <th style={{ top: 0, textAlign: 'center' }}>Número de integrantes</th>
+            <th style={{ top: 0, textAlign: 'center' }}>Folio</th>
           </tr>
         </thead>
         <tbody>

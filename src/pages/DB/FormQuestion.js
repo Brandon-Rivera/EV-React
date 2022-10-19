@@ -36,9 +36,9 @@ const FormQuestion = () => {
   const questions = Object.values(question)
 
   const options = [
-    { value: '', label: 'Respuesta corta' }, { value: '', label: 'Respuesta larga' },
-    { value: '4', label: 'Opción múltiple (4 opciones)' }, { value: '5', label: 'Opción múltiple (5 opciones)' },
-    { value: '6', label: 'Opción múltiple (6 opciones)' }, { value: '8', label: 'Opción múltiple (8 opciones)' }
+    { value: '1', label: 'Respuesta corta' }, { value: '2', label: 'Respuesta larga' },
+    { value: '3', label: 'Opción múltiple (4 opciones)' }, { value: '4', label: 'Opción múltiple (5 opciones)' },
+    { value: '5', label: 'Opción múltiple (6 opciones)' }, { value: '6', label: 'Opción múltiple (8 opciones)' }
   ];
 
   const [values, setValues] = useState({
@@ -83,8 +83,8 @@ const FormQuestion = () => {
         console.log(vals)
 
         let opcion = {}
-        for (let i = 0; i < names.length; i++) {
-          opcion = { idQuestions: data_.insertId, optionName: names[i], optionValue: Number(vals[i]) }
+        for (let i = 0; i < names.length; i++) { //data_.insertId
+          opcion = { idQuestions: values.qOptions, optionName: names[i], optionValue: Number(vals[i]) }
           console.log(opcion)
           const response2 = fetch(`${api}/questionsoptions`,
             //const response = fetch(`http://localhost:3001/api/questions`,
@@ -93,7 +93,6 @@ const FormQuestion = () => {
               headers: {
                 'Content-Type': 'application/json',
                 'x-access-token': token
-                //'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOiJlbW1hIiwiaWF0IjoxNjY2MTUwODYxLCJleHAiOjE2NjYxNTgwNjF9.XvDTkNVm-LbFLBMBfo4gVVCgKWJYr26TaOedI8P5gt4'
               },
               body: JSON.stringify(opcion),
             })
@@ -146,10 +145,10 @@ const FormQuestion = () => {
               onChange={handleChange}
             />
             <div id="options">
-              {option === "4" && Array.from(Array(4)).map(i => <OptionForm key={i} />)}
-              {option === "5" && Array.from(Array(5)).map(i => <OptionForm key={i} />)}
-              {option === "6" && Array.from(Array(6)).map(i => <OptionForm key={i} />)}
-              {option === "8" && Array.from(Array(8)).map(i => <OptionForm key={i} />)}
+              {option === "3" && Array.from(Array(4)).map(i => <OptionForm key={i} />)}
+              {option === "4" && Array.from(Array(5)).map(i => <OptionForm key={i} />)}
+              {option === "5" && Array.from(Array(6)).map(i => <OptionForm key={i} />)}
+              {option === "6" && Array.from(Array(8)).map(i => <OptionForm key={i} />)}
             </div>
             <Button variant="primary" type='submit'>Agregar</Button><br></br>
             <Button variant="primary" type="button" >Modificar</Button>
@@ -167,6 +166,7 @@ const FormQuestion = () => {
                 <th>Tipo</th>
                 <th>Pregunta</th>
                 <th>Descripción</th>
+                <th>qOptions</th>
               </tr>
             </thead>
             <tbody>
@@ -177,6 +177,7 @@ const FormQuestion = () => {
                       <td>Respuesta corta</td>
                       <td>{question.question}</td>
                       <td>{question.questionDescription}</td>
+                      <td>{question.qOptions}</td>
                     </tr>
                   }
                   else if(question.questionType === 2) {
@@ -184,6 +185,7 @@ const FormQuestion = () => {
                       <td>Respuesta larga</td>
                       <td>{question.question}</td>
                       <td>{question.questionDescription}</td>
+                      <td>{question.qOptions}</td>
                     </tr>
                   }
                   else if(question.questionType === 3) {
@@ -191,6 +193,7 @@ const FormQuestion = () => {
                       <td>Opción múltiple (4 opciones)</td>
                       <td>{question.question}</td>
                       <td>{question.questionDescription}</td>
+                      <td>{question.qOptions}</td>
                     </tr>
                   }
                   else if(question.questionType === 4) {
@@ -198,6 +201,7 @@ const FormQuestion = () => {
                       <td>Opción múltiple (5 opciones)</td>
                       <td>{question.question}</td>
                       <td>{question.questionDescription}</td>
+                      <td>{question.qOptions}</td>
                     </tr>
                   }
                   else if(question.questionType === 5) {
@@ -205,6 +209,7 @@ const FormQuestion = () => {
                       <td>Opción múltiple (6 opciones)</td>
                       <td>{question.question}</td>
                       <td>{question.questionDescription}</td>
+                      <td>{question.qOptions}</td>
                     </tr>
                   }
                   else if(question.questionType === 6) {
@@ -212,6 +217,7 @@ const FormQuestion = () => {
                       <td>Opción múltiple (8 opciones)</td>
                       <td>{question.question}</td>
                       <td>{question.questionDescription}</td>
+                      <td>{question.qOptions}</td>
                     </tr>
                   }
                 })}

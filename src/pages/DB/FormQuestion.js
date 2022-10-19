@@ -17,6 +17,23 @@ const FormQuestion = () => {
 
   const [section, setSection] = useState("Tipo de pregunta");
   const [option, setOption] = useState("")
+  const [question, setQuestion] = useState({ adminName: "" });
+
+  useEffect(() => {
+    getQuestion()
+  }, [question])
+
+  const getQuestion = async () => {
+    // `${api}/administrador/${id}`
+    const response = await fetch(`${api}/questions`, {
+      headers: {
+        'x-access-token': token
+      }
+    })
+    const dataq = await response.json()
+    setQuestion(dataq)
+  }
+  const questions = Object.values(question)
 
   const options = [
     { value: '', label: 'Respuesta corta' }, { value: '', label: 'Respuesta larga' },
@@ -61,13 +78,13 @@ const FormQuestion = () => {
         console.log('Success:', data_);
         const data = new FormData(form1.current)
         const names = data.getAll('optionName')
-        const vals = Number(data.getAll('optionValue'))
+        const vals = data.getAll('optionValue')
         console.log(names.length)
         console.log(vals)
 
         let opcion = {}
         for (let i = 0; i < names.length; i++) {
-          opcion = { idQuestions: data_.insertId, optionName: names[i], optionValue: vals[i] }
+          opcion = { idQuestions: data_.insertId, optionName: names[i], optionValue: Number(vals[i]) }
           console.log(opcion)
           const response2 = fetch(`${api}/questionsoptions`,
             //const response = fetch(`http://localhost:3001/api/questions`,
@@ -150,24 +167,54 @@ const FormQuestion = () => {
                 <th>Tipo</th>
                 <th>Pregunta</th>
                 <th>Descripción</th>
-                <th>Activo</th>
-                <th>Opciones</th>
               </tr>
             </thead>
             <tbody>
-              {/* {
-              foods.map(food => (
-                <tr >
-                  <td>{food.foodName}</td>
-                  <td>{food.foodDesc}</td>
-                  <td>{food.lipidos}</td>
-                  <td>{food.carbohidratos}</td>
-                  <td>{food.proteinas}</td>
-                  <td>{food.measure}</td>
-                  <td>{food.stock}</td>
-                  <td>{food.expiration}</td>
-                </tr>
-              ))} */}
+              {
+                questions.map((question, index) => {
+                  if (question.questionType === 1) {
+                    return <tr >
+                      <td>Respuesta corta</td>
+                      <td>{question.question}</td>
+                      <td>{question.questionDescription}</td>
+                    </tr>
+                  }
+                  else if(question.questionType === 2) {
+                    return <tr >
+                      <td>Respuesta larga</td>
+                      <td>{question.question}</td>
+                      <td>{question.questionDescription}</td>
+                    </tr>
+                  }
+                  else if(question.questionType === 3) {
+                    return <tr >
+                      <td>Opción múltiple (4 opciones)</td>
+                      <td>{question.question}</td>
+                      <td>{question.questionDescription}</td>
+                    </tr>
+                  }
+                  else if(question.questionType === 4) {
+                    return <tr >
+                      <td>Opción múltiple (5 opciones)</td>
+                      <td>{question.question}</td>
+                      <td>{question.questionDescription}</td>
+                    </tr>
+                  }
+                  else if(question.questionType === 5) {
+                    return <tr >
+                      <td>Opción múltiple (6 opciones)</td>
+                      <td>{question.question}</td>
+                      <td>{question.questionDescription}</td>
+                    </tr>
+                  }
+                  else if(question.questionType === 6) {
+                    return <tr >
+                      <td>Opción múltiple (8 opciones)</td>
+                      <td>{question.question}</td>
+                      <td>{question.questionDescription}</td>
+                    </tr>
+                  }
+                })}
             </tbody>
           </table>
         </div>

@@ -58,7 +58,7 @@ const FormQuestion = () => {
 
     console.log('valores:', values);
 
-    const response = fetch(`${api}/questions`,
+    const response = fetch(`${api}/questionsTrue`,
       //const response = fetch(`http://localhost:3001/api/questions`,
       {
         method: 'PUT',
@@ -74,6 +74,10 @@ const FormQuestion = () => {
   const goto = () => {
     navigate('/question', { replace: true });
   } 
+
+  const gotoF = () => {
+    navigate('/questionF', { replace: true });
+  }
 
   return (
     <>
@@ -91,7 +95,8 @@ const FormQuestion = () => {
               onChange={handleChange}
             />
             <Button variant="primary" type='button' onClick={goto}>Agregar</Button><br></br>
-            <Button variant="primary" type="submit" >Desactivar</Button>
+            <Button variant="primary" type="submit">Activar</Button><br></br>
+            <Button variant="primary" type="button" onClick={gotoF}>Desactivar</Button>
           </form>
         </div>
         <div style={{ padding: "10px" }}>

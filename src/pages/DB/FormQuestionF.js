@@ -43,8 +43,6 @@ const FormQuestion = () => {
 
   const [values, setValues] = useState({
     question: '',
-    questionDescription: '',
-    qOptions: 0
   });
 
   const handleChange = e => {
@@ -60,10 +58,10 @@ const FormQuestion = () => {
 
     console.log('valores:', values);
 
-    const response = fetch(`${api}/questions`,
+    const response = fetch(`${api}/questionsFalse`,
       //const response = fetch(`http://localhost:3001/api/questions`,
       {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           'x-access-token': token
@@ -71,43 +69,12 @@ const FormQuestion = () => {
         },
         body: JSON.stringify(values),
       })
-      .then((response) => {
-        return response.json()
-      })
-      .then((data_) => {
-        console.log('Success:', data_);
-        const data = new FormData(form1.current)
-        const names = data.getAll('optionName')
-        const vals = data.getAll('optionValue')
-        console.log(names.length)
-        console.log(vals)
-
-        let opcion = {}
-        for (let i = 0; i < names.length; i++) { //data_.insertId
-          opcion = { idQuestions: values.qOptions, optionName: names[i], optionValue: Number(vals[i]) }
-          console.log(opcion)
-          const response2 = fetch(`${api}/questionsoptions`,
-            //const response = fetch(`http://localhost:3001/api/questions`,
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'x-access-token': token
-              },
-              body: JSON.stringify(opcion),
-            })
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-
   };
 
-  const gotoF = () => {
-    navigate('/questionF', { replace: true });
-  }
-  
+  const goto = () => {
+    navigate('/question', { replace: true });
+  } 
+
   const gotoT = () => {
     navigate('/questionT', { replace: true });
   } 
@@ -118,13 +85,6 @@ const FormQuestion = () => {
         <div class="form-div">
           <form class="register-form" ref={form1} onSubmit={handleSubmit}>
             <h1>Question</h1>
-            <Dropdown options={options} value={section} name="questionType" placeholder="Select an option" onChange={({ value }) => {
-              setValues({
-                ...values,
-                questionType: Number(value)
-              })
-              setOption(value)
-            }} />
             <input
               id="question"
               class="form-field"
@@ -134,33 +94,9 @@ const FormQuestion = () => {
               value={values.question}
               onChange={handleChange}
             />
-            <input
-              id="questionDescription"
-              class="form-field"
-              type="text"
-              placeholder="Descripción de la pregunta"
-              name="questionDescription"
-              value={values.questionDescription}
-              onChange={handleChange}
-            />
-            <input
-              id="qOptions"
-              class="form-field"
-              type="number"
-              placeholder="Número de opciones"
-              name="qOptions"
-              value={values.qOptions}
-              onChange={handleChange}
-            />
-            <div id="options">
-              {option === "3" && Array.from(Array(4)).map(i => <OptionForm key={i} />)}
-              {option === "4" && Array.from(Array(5)).map(i => <OptionForm key={i} />)}
-              {option === "5" && Array.from(Array(6)).map(i => <OptionForm key={i} />)}
-              {option === "6" && Array.from(Array(8)).map(i => <OptionForm key={i} />)}
-            </div>
-            <Button variant="primary" type='submit'>Agregar</Button><br></br>
+            <Button variant="primary" type='button' onClick={goto}>Agregar</Button><br></br>
             <Button variant="primary" type="button" onClick={gotoT}>Activar</Button><br></br>
-            <Button variant="primary" type="button" onClick={gotoF}>Desactivar</Button>
+            <Button variant="primary" type="submit" >Desactivar</Button>
           </form>
         </div>
         <div style={{ padding: "10px" }}>

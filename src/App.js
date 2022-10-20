@@ -12,7 +12,8 @@ import Form2 from './pages/FormInicio';
 import Whitelist from './pages/DB/FormWhite';
 import Food from './pages/DB/FormFood';
 import Question from './pages/DB/FormQuestion';
-import Question2 from './pages/DB/FormQuestion2';
+import QuestionF from './pages/DB/FormQuestionF';
+import QuestionT from './pages/DB/FormQuestionT'
 import Ubicacion from './pages/ubicacion';
 import Miembros from './pages/miembros';
 import Respuestas from './pages/respuestas';
@@ -51,7 +52,8 @@ function App() {
               <Route path="/ubicacion" element={<Ubicacion />}></Route>
               <Route path="/miembros" element={<Miembros />}></Route>
               <Route path="/respuestas" element={<Respuestas />}></Route>
-              <Route path="/question2" element={<Question2 />}></Route>
+              <Route path="/questionF" element={<QuestionF />}></Route>
+              <Route path="/questionT" element={<QuestionT />}></Route>
               <Route path="*" element={<Navigate to="/" />}></Route>
             </>
             }

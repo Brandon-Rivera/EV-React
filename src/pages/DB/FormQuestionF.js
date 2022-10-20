@@ -19,6 +19,10 @@ const FormQuestion = () => {
   const [option, setOption] = useState("")
   const [question, setQuestion] = useState({ adminName: "" });
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   useEffect(() => {
     getQuestion()
   }, [question])
@@ -69,6 +73,8 @@ const FormQuestion = () => {
         },
         body: JSON.stringify(values),
       })
+    
+    handleShow();
   };
 
   const goto = () => {
@@ -98,6 +104,19 @@ const FormQuestion = () => {
             <Button variant="primary" type="button" onClick={gotoT}>Activar</Button><br></br>
             <Button variant="primary" type="submit" >Desactivar</Button>
           </form>
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Pregunta desactivada</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Woohoo, desactivaste una pregunta!</Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Cerrar
+              </Button>
+            </Modal.Footer>
+          </Modal>
+
         </div>
         <div style={{ padding: "10px" }}>
           <table style={{

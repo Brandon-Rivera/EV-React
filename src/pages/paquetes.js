@@ -6,6 +6,7 @@ import "./paquetes.css";
 import PieChart from "../components/PieChart";
 import { Doughnut } from "react-chartjs-2";
 import { UserData } from "../components/Data";
+import FormPaquetes from "./FormPaquetes";
 
 const StatChart = ({ dataA, dataB, title }) => (
   <div style={{ width: "100px", height: "100px" }}>
@@ -219,6 +220,10 @@ const Paquetes = () => {
               </tr>
             </tbody>
           </table>
+        </div>
+        {/*FORM PARA ACTUALIZAR Y CREAR NUEVO PAQUETE*/}
+        <div>
+            <FormPaquetes/>
         </div>
       </div>
     </>

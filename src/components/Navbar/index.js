@@ -15,7 +15,7 @@ const Navbar = () => {
     const handleLogout = () => setToken(null);
 
     const options = [
-        'Food', 'Questions', 'Whitelist', 'Folio', 'Paquete2'
+        'Food', 'Questions', 'Whitelist', 'Folio'
     ];
 
     return (

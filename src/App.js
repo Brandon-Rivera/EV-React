@@ -7,6 +7,7 @@ import General from './pages/general';
 import Insumos from './pages/insumos';
 import Detallado from './pages/detallado';
 import Paquetes from './pages/paquetes';
+import Paquete2 from './pages/Paquete2';
 import Form from './pages/Form';
 import Form2 from './pages/FormInicio';
 import Whitelist from './pages/DB/FormWhite';
@@ -48,6 +49,7 @@ function App() {
               <Route path="/insumos" element={<Insumos />}></Route>
               <Route path="/reporte-detallado" element={<Detallado />}></Route>
               <Route path="/paquete" element={<Paquetes />}></Route>
+              <Route path="/paquete2" element={<Paquete2 />}></Route>
               <Route path="/whitelist" element={<Whitelist />}></Route>
               <Route path="/food" element={<Food />}></Route>
               <Route path="/question" element={<Question />}></Route>

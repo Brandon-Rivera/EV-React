@@ -65,13 +65,12 @@ const FormQuestion = () => {
     console.log('valores:', values);
 
     const response = fetch(`${api}/questions`,
-      //const response = fetch(`http://localhost:3001/api/questions`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'x-access-token': token
-          //'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOiJlbW1hIiwiaWF0IjoxNjY2MTUwODYxLCJleHAiOjE2NjYxNTgwNjF9.XvDTkNVm-LbFLBMBfo4gVVCgKWJYr26TaOedI8P5gt4'
+          
         },
         body: JSON.stringify(values),
       })

@@ -9,7 +9,6 @@ const Ubicacion = () => {
 
   const location = useLocation()
   const userId = location.state
-  console.log(userId)
 
   const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
   const { token } = useToken();

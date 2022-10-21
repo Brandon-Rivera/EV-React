@@ -67,18 +67,16 @@ const General = () => {
             <th style={{ top: 0, textAlign: 'center' }}>Beneficiario</th>
             <th style={{ top: 0, textAlign: 'center' }}>Correo</th>
             <th style={{ top: 0, textAlign: 'center' }}>Teléfono</th>
-            <th style={{ top: 0, textAlign: 'center' }}>Número de integrantes</th>
             <th style={{ top: 0, textAlign: 'center' }}>Folio</th>
           </tr>
         </thead>
         <tbody>
           {
             userss.map(user => (
-              <tr >
+              <tr key={user.id}>
                 <td style={{ top: 0, textAlign: 'center' }}>{user.userName}</td>
                 <td style={{ top: 0, textAlign: 'center' }}>{user.eMail}</td>
                 <td style={{ top: 0, textAlign: 'center' }}>{user.phoneNumber}</td>
-                <td style={{ top: 0, textAlign: 'center' }}>4</td>
                 <td style={{ top: 0, textAlign: 'center' }}>{user.folio}</td>
               </tr>
             ))}

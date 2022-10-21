@@ -1,0 +1,47 @@
+import React, {useState, useEffect, useMemo} from "react";
+import { useLocation, Link } from "react-router-dom";
+import { useToken } from '../../TokenContext';
+import jwt from "jwt-decode";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
+const FormPaquetesEditar = () =>{
+
+    const { token } = useToken();
+    const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
+
+    const [food, setFood] = useState()
+
+    useEffect(() => {
+      getFood()
+    }, [])
+
+    const getFood = async () => {
+        // const token = localStorage.getItem('token')
+        const id = jwt(token).id
+        // `${api}/administrador/${id}`
+        const response = await fetch(`${api}/user`, {
+          headers: {
+            'x-access-token': token
+          }
+        })
+        const data = await response.json()
+        setFood(data)
+    }
+
+    return(
+      <div className="form-div">
+        <form className="register-form">
+            <h1>Editar paquete</h1>
+                <label htmlFor="foodName" className="form-label">Alimento</label>
+                <input placeholder="Nombre de alimento" type="text" id="foodName" className="form-control"/>
+                <br></br><br></br>
+                <input placeholder="Cantidad" type="number" id="foodName" className="form-control"/>
+                <br></br><br></br>
+                <Button variant="primary" type='submit'>Agregar</Button><br></br>
+        </form>
+      </div>
+    )
+}
+
+export default FormPaquetesEditar

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useToken } from "../TokenContext";
 import jwt from "jwt-decode";
 import "./paquetes.css";
@@ -7,6 +7,7 @@ import PieChart from "../components/PieChart";
 import { Doughnut } from "react-chartjs-2";
 import { UserData } from "../components/Data";
 import FormPaquetes from "./DB/FormPaquetes";
+import FormPaquetesEditar from "./DB/FormPaquetesEditar";
 
 const StatChart = ({ dataA, dataB, title }) => (
   <div style={{ width: "100px", height: "100px" }}>
@@ -36,12 +37,13 @@ const StatChart = ({ dataA, dataB, title }) => (
 
 const Paquetes = () => {
   const location = useLocation();
-  const userId = location.state;
-  const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
+  const userArray = location.state;
+  const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api";
   const { token } = useToken();
 
   const [paquetes, setPaquetes] = useState({ idFood: 0 });
   const [food, setFood] = useState({ foodName: "" });
+  const [paquete, setPaquete] = useState({ alimento: "", cantidad: 0 });
 
   useEffect(() => {
     getPaquetesById();
@@ -53,7 +55,7 @@ const Paquetes = () => {
 
   const getPaquetesById = async () => {
     const id = jwt(token).id;
-    const response = await fetch(`${api}/package/${userId[0]}`, {
+    const response = await fetch(`${api}/package/${userArray[0]}`, {
       headers: {
         "x-access-token": token,
       },
@@ -87,22 +89,23 @@ const Paquetes = () => {
     let lipidos = 0;
     let carbs = 0;
     let prots = 0;
+    let idx = 0;
     for (var i = 0; i < paquetes.length; i++) {
       for (var j = 0; j < food.length; j++) {
         if (food[j].id === paquetes[i].idFood) {
-          food[j].quantity = paquetes[i].quantity;
-          arr.push(food[j]);
+          idx++;
+          arr.push({
+            ...food[j],
+            idx,
+            quantity: paquetes[i].quantity,
+          });
 
           lipidos += food[j].lipidos * paquetes[i].quantity;
           carbs += food[j].carbohidratos * paquetes[i].quantity;
           prots += food[j].proteinas * paquetes[i].quantity;
-
         }
       }
     }
-
-  
-
     return {
       arr,
       lipidos,
@@ -111,17 +114,20 @@ const Paquetes = () => {
     };
   }, [paquetes, food]);
 
-  const handleDelete = async id => {
-    const response = await fetch(`${api}/package/${id}`,
-    {
+  const handleDelete = async (id, pacId) => {
+    const response = await fetch(`${api}/packagedos`, {
       method: "DELETE",
-      headers: { 
-        'x-access-token': token
-      },
-    }
-    );
-  }
+      headers: {
+        "x-access-token": token,
+        "Content-Type": "application/json",
 
+      }, body: JSON.stringify({
+        
+        "idFood": Number(pacId),
+        "idUser": Number(id)
+      })
+    })    
+  };
 
   function openImg() {
     console.log("Funcion de la imagen :D");
@@ -130,7 +136,7 @@ const Paquetes = () => {
   return (
     <>
       <div>
-        <h1 className="title">Paquete de {userId[1]}</h1>
+        <h1 className="title">Paquete de {userArray[1]}</h1>
         <br />
       </div>
       <div
@@ -141,7 +147,7 @@ const Paquetes = () => {
         }}
       >
         <div>
-            <FormPaquetes/>
+          <FormPaquetes userId= {userArray[0]}/>
         </div>
         {/* TABLA DE ALIMENTOS */}
         <div style={{ marginRight: "20px" }}>
@@ -159,36 +165,33 @@ const Paquetes = () => {
                 <th style={{ position: "sticky", top: 0 }}>Unidad</th>
                 <th style={{ position: "sticky", top: 0 }}>Cantidad</th>
                 <th></th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
               {pacFood.arr.map((pac) => (
-                  <tr key={pac.id}>
-                    <td style = {{ top: 0, textAlign: "center" }}>{pac.foodName}</td>
-                    <td style = {{ top: 0, textAlign: "center" }}>{pac.measure}</td>
-                    <td style = {{ top: 0, textAlign: "center" }}>{pac.quantity}</td>
-                    <td>
-                      <button type="button">
-                        <img
-                          src="assets/pencil.png"
-                          alt=""
-                          width="30px"
-                          height="30px"
-                        />
-                      </button>
-                    </td>
-                    <td>
-                      <button type="button" onClick={() => handleDelete(paquetes[0].idUser)}>
-                        <img
-                          src="assets/trash.png"
-                          alt=""
-                          width="30px"
-                          height="30px"
-                        />
-                      </button>
-                    </td>
-                  </tr>
+                
+                <tr key={pac.idx}>
+                  <td style={{ top: 0, textAlign: "center" }}>
+                    {pac.foodName}
+                  </td>
+                  <td style={{ top: 0, textAlign: "center" }}>{pac.measure}</td>
+                  <td style={{ top: 0, textAlign: "center" }}>
+                    {pac.quantity}
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(paquetes[0].idUser, pac.id)}
+                    >
+                      <img
+                        src="assets/trash.png"
+                        alt=""
+                        width="30px"
+                        height="30px"
+                      />
+                    </button>
+                  </td>
+                </tr>
               ))}
             </tbody>
           </table>
@@ -206,38 +209,54 @@ const Paquetes = () => {
           >
             <tbody>
               <tr>
-                <td className="lateral-header" style={{ top: 0, textAlign: "center" }}>Carbohidratos</td>
+                <td
+                  className="lateral-header"
+                  style={{ top: 0, textAlign: "center" }}
+                >
+                  Carbohidratos
+                </td>
                 <td>
-                  <StatChart dataA={pacFood.carbs} dataB={200 - pacFood.carbs} />
-                  <h6 style = {{textAlign: 'center'}}>{pacFood.carbs}/200</h6>
+                  <StatChart
+                    dataA={pacFood.carbs}
+                    dataB={200 - pacFood.carbs}
+                  />
+                  <h6 style={{ textAlign: "center" }}>{pacFood.carbs}/200</h6>
                 </td>
               </tr>
               <tr>
-                <td className="lateral-header" style={{ top: 0, textAlign: "center" }}>Lipidos</td>
+                <td
+                  className="lateral-header"
+                  style={{ top: 0, textAlign: "center" }}
+                >
+                  Lipidos
+                </td>
                 <td>
-                  <StatChart dataA={pacFood.lipidos} dataB={200 - pacFood.lipidos} />
-                  <h6 style = {{textAlign: 'center'}}>{pacFood.lipidos}/200</h6>
+                  <StatChart
+                    dataA={pacFood.lipidos}
+                    dataB={200 - pacFood.lipidos}
+                  />
+                  <h6 style={{ textAlign: "center" }}>{pacFood.lipidos}/200</h6>
                 </td>
               </tr>
               <tr>
-                <td className="lateral-header" style={{ top: 0, textAlign: "center" }}>Proteinas</td>
-                <td>
-                  <StatChart dataA={pacFood.prots} dataB={200 - pacFood.prots} />
-                  <h6 style = {{textAlign: 'center'}}>{pacFood.prots}/200</h6>
+                <td
+                  className="lateral-header"
+                  style={{ top: 0, textAlign: "center" }}
+                >
+                  Proteinas
                 </td>
-              </tr>
-              <tr>
-                <td className="lateral-header">Adultos</td>
-                <td>5</td>
-              </tr>
-              <tr>
-                <td className="lateral-header">Infantes</td>
-                <td>3</td>
+                <td>
+                  <StatChart
+                    dataA={pacFood.prots}
+                    dataB={200 - pacFood.prots}
+                  />
+                  <h6 style={{ textAlign: "center" }}>{pacFood.prots}/200</h6>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
-        {/*FORM PARA ACTUALIZAR Y CREAR NUEVO PAQUETE*/} 
+        {/*FORM PARA ACTUALIZAR Y CREAR NUEVO PAQUETE*/}
       </div>
     </>
   );

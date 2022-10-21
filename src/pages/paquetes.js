@@ -218,7 +218,8 @@ const Paquetes = () => {
                 <td>
                   <StatChart
                     dataA={pacFood.carbs}
-                    dataB={200 - pacFood.carbs}
+                    dataB={Math.max(0, 200 - pacFood.carbs)}
+                    
                   />
                   <h6 style={{ textAlign: "center" }}>{pacFood.carbs}/200</h6>
                 </td>
@@ -233,7 +234,7 @@ const Paquetes = () => {
                 <td>
                   <StatChart
                     dataA={pacFood.lipidos}
-                    dataB={200 - pacFood.lipidos}
+                    dataB={Math.max(0, 200 - pacFood.lipidos)}
                   />
                   <h6 style={{ textAlign: "center" }}>{pacFood.lipidos}/200</h6>
                 </td>
@@ -248,7 +249,7 @@ const Paquetes = () => {
                 <td>
                   <StatChart
                     dataA={pacFood.prots}
-                    dataB={200 - pacFood.prots}
+                    dataB={Math.max(0, 200 - pacFood.prots)}
                   />
                   <h6 style={{ textAlign: "center" }}>{pacFood.prots}/200</h6>
                 </td>

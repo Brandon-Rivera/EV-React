@@ -162,7 +162,7 @@ const FormFood = () => {
             <Modal.Header closeButton>
               <Modal.Title>Comida modificada</Modal.Title>
             </Modal.Header>
-            <Modal.Body>Estas a punto de eliminar una comida. ¿Estás seguro?</Modal.Body>
+            <Modal.Body>Woohoo, modificaste a una comida!</Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose1}>
                 No

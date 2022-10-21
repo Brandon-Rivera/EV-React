@@ -112,6 +112,10 @@ const Paquete2 = () => {
         document.getElementById("agregar").innerHTML = ``;
     }
 
+    let lipidos = 0;
+    let carbs = 0;
+    let prots = 0;
+    
     return (
         <>
             <div>
@@ -139,13 +143,19 @@ const Paquete2 = () => {
                                     <td>Kg</td>
                                     <td>1</td> 
                                 `;
+                                let prots = 50;
+                                let carbs = 50;
+                                let lipidos = 50;
                                 break;
                             case 'Frijol':
                                 document.getElementById("agregar").innerHTML = `
                                     <td>Frijol</td>
                                     <td>Kg</td>
                                     <td>1</td> 
-                                `; 
+                                `;
+                                prots = prots + 40;
+                                carbs = carbs + 20;
+                                lipidos = lipidos + 30;
                                 break;
                             default:
                                 break;
@@ -160,9 +170,15 @@ const Paquete2 = () => {
                         switch (value) {
                             case 'Arroz':
                                 document.getElementById("agregar").innerHTML = ``;
+                                prots = 20;
+                                carbs = 30;
+                                lipidos = 40;
                                 break;
                             case 'Frijol':
                                 document.getElementById("agregar").innerHTML = ``;
+                                prots = 20;
+                                carbs = 30;
+                                lipidos = 40;
                                 break;
                             default:
                                 break;
@@ -192,7 +208,7 @@ const Paquete2 = () => {
                             <tr>
                                 <td>Frijol</td>
                                 <td>Kg</td>
-                                <td>12</td>
+                                <td>1</td>
                             </tr>
                             <tr id="agregar"></tr>
                         </tbody>
@@ -213,22 +229,22 @@ const Paquete2 = () => {
                             <tr>
                                 <td className="lateral-header" style={{ top: 0, textAlign: "center" }}>Carbohidratos</td>
                                 <td>
-                                    <StatChart dataA={pacFood.carbs} dataB={200 - pacFood.carbs} />
-                                    <h6 style={{ textAlign: 'center' }}>{pacFood.carbs}/200</h6>
+                                    <StatChart dataA={carbs} dataB={200 - carbs} />
+                                    <h6 style={{ textAlign: 'center' }}>{carbs}/200</h6>
                                 </td>
                             </tr>
                             <tr>
                                 <td className="lateral-header" style={{ top: 0, textAlign: "center" }}>Lipidos</td>
                                 <td>
-                                    <StatChart dataA={pacFood.lipidos} dataB={200 - pacFood.lipidos} />
-                                    <h6 style={{ textAlign: 'center' }}>{pacFood.lipidos}/200</h6>
+                                    <StatChart dataA={lipidos} dataB={200 - lipidos} />
+                                    <h6 style={{ textAlign: 'center' }}>{lipidos}/200</h6>
                                 </td>
                             </tr>
                             <tr>
                                 <td className="lateral-header" style={{ top: 0, textAlign: "center" }}>Proteinas</td>
                                 <td>
-                                    <StatChart dataA={pacFood.prots} dataB={200 - pacFood.prots} />
-                                    <h6 style={{ textAlign: 'center' }}>{pacFood.prots}/200</h6>
+                                    <StatChart dataA={prots} dataB={200 - prots} />
+                                    <h6 style={{ textAlign: 'center' }}>{prots}/200</h6>
                                 </td>
                             </tr>
                             <tr>

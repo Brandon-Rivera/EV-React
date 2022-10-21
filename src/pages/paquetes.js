@@ -6,7 +6,7 @@ import "./paquetes.css";
 import PieChart from "../components/PieChart";
 import { Doughnut } from "react-chartjs-2";
 import { UserData } from "../components/Data";
-import FormPaquetes from "./FormPaquetes";
+import FormPaquetes from "./DB/FormPaquetes";
 
 const StatChart = ({ dataA, dataB, title }) => (
   <div style={{ width: "100px", height: "100px" }}>
@@ -101,6 +101,8 @@ const Paquetes = () => {
       }
     }
 
+  
+
     return {
       arr,
       lipidos,
@@ -108,6 +110,17 @@ const Paquetes = () => {
       prots,
     };
   }, [paquetes, food]);
+
+  const handleDelete = async id => {
+    const response = await fetch(`${api}/package/${id}`,
+    {
+      method: "DELETE",
+      headers: { 
+        'x-access-token': token
+      },
+    }
+    );
+  }
 
 
   function openImg() {
@@ -127,6 +140,9 @@ const Paquetes = () => {
           justifyContent: "center",
         }}
       >
+        <div>
+            <FormPaquetes/>
+        </div>
         {/* TABLA DE ALIMENTOS */}
         <div style={{ marginRight: "20px" }}>
           <table
@@ -163,7 +179,7 @@ const Paquetes = () => {
                       </button>
                     </td>
                     <td>
-                      <button type="button">
+                      <button type="button" onClick={() => handleDelete(paquetes[0].idUser)}>
                         <img
                           src="assets/trash.png"
                           alt=""
@@ -221,10 +237,7 @@ const Paquetes = () => {
             </tbody>
           </table>
         </div>
-        {/*FORM PARA ACTUALIZAR Y CREAR NUEVO PAQUETE*/}
-        <div>
-            <FormPaquetes/>
-        </div>
+        {/*FORM PARA ACTUALIZAR Y CREAR NUEVO PAQUETE*/} 
       </div>
     </>
   );

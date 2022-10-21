@@ -11,7 +11,7 @@ const Ubicacion = () => {
   const userId = location.state
   console.log(userId)
 
-  const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
+  const api = "https://osdup4mgd8.execute-api.us-east-1.amazonaws.com/proxy1/api"
   const { token } = useToken();
   const [ubicacion, setUbicacion] = useState({ lat: 18, lng: -99 });
   // vacío, se ejecuta cada vez que renderiza el componente

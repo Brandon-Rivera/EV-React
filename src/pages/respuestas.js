@@ -6,7 +6,7 @@ import { useToken } from "../TokenContext";
 const Respuestas = () => {
   const location = useLocation();
   const miembroId = location.state;
-  const api = "https://osdup4mgd8.execute-api.us-east-1.amazonaws.com/proxy1/api"
+  const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
   const [preguntas, setPreguntas] = useState(null);
   const [respuestas, setRespuestas] = useState(null);

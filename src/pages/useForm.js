@@ -20,7 +20,7 @@ const useForm = (callback, validate) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const api = "https://osdup4mgd8.execute-api.us-east-1.amazonaws.com/proxy1/api"
+    const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
     const response = fetch(`${api}/adminregister`,
                                   {

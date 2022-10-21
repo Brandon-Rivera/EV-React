@@ -44,7 +44,7 @@ const FormFood = () => {
     e.preventDefault();
     const formData = new FormData(form.current)
 
-    const api = "https://osdup4mgd8.execute-api.us-east-1.amazonaws.com/proxy1/api"
+    const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
     const response = await fetch(`${api}/food`,
       {

@@ -13,7 +13,7 @@ const FormQuestion = () => {
   const navigate = useNavigate();
   const form1 = useRef(null);
   const { token } = useToken();
-  const api = "https://osdup4mgd8.execute-api.us-east-1.amazonaws.com/proxy1/api"
+  const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
   const [section, setSection] = useState("Tipo de pregunta");
   const [option, setOption] = useState("")
@@ -65,13 +65,12 @@ const FormQuestion = () => {
     console.log('valores:', values);
 
     const response = fetch(`${api}/questions`,
-      //const response = fetch(`http://localhost:3001/api/questions`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'x-access-token': token
-          //'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOiJlbW1hIiwiaWF0IjoxNjY2MTUwODYxLCJleHAiOjE2NjYxNTgwNjF9.XvDTkNVm-LbFLBMBfo4gVVCgKWJYr26TaOedI8P5gt4'
+          
         },
         body: JSON.stringify(values),
       })

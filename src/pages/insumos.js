@@ -6,7 +6,7 @@ import { useToken } from '../TokenContext';
 import { ListGroup, Table } from 'react-bootstrap';
 
 const Insumos = () => {
-  const api = "https://osdup4mgd8.execute-api.us-east-1.amazonaws.com/proxy1/api"
+  const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
   const [users, setUsers] = useState({ adminName: "" });
   // vacío, se ejecuta cada vez que renderiza el componente

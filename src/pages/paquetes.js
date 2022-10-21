@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useToken } from "../TokenContext";
 import jwt from "jwt-decode";
 import "./paquetes.css";
 import PieChart from "../components/PieChart";
 import { Doughnut } from "react-chartjs-2";
 import { UserData } from "../components/Data";
-import FormPaquetes from "./FormPaquetes";
+import FormPaquetes from "./DB/FormPaquetes";
+import FormPaquetesEditar from "./DB/FormPaquetesEditar";
 
 const StatChart = ({ dataA, dataB, title }) => (
   <div style={{ width: "100px", height: "100px" }}>
@@ -37,11 +38,12 @@ const StatChart = ({ dataA, dataB, title }) => (
 const Paquetes = () => {
   const location = useLocation();
   const userId = location.state;
-  const api = "https://osdup4mgd8.execute-api.us-east-1.amazonaws.com/proxy1/api"
+  const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
   const { token } = useToken();
 
   const [paquetes, setPaquetes] = useState({ idFood: 0 });
   const [food, setFood] = useState({ foodName: "" });
+  const [paquete, setPaquete] = useState({alimento: "", cantidad: 0});
 
   useEffect(() => {
     getPaquetesById();
@@ -91,6 +93,7 @@ const Paquetes = () => {
       for (var j = 0; j < food.length; j++) {
         if (food[j].id === paquetes[i].idFood) {
           food[j].quantity = paquetes[i].quantity;
+          food[j].id = paquetes[i].id;
           arr.push(food[j]);
 
           lipidos += food[j].lipidos * paquetes[i].quantity;
@@ -100,7 +103,6 @@ const Paquetes = () => {
         }
       }
     }
-
     return {
       arr,
       lipidos,
@@ -108,6 +110,18 @@ const Paquetes = () => {
       prots,
     };
   }, [paquetes, food]);
+
+
+  const handleDelete = async id => {
+    const response = await fetch(`${api}/package/${id}`,
+    {
+      method: "DELETE",
+      headers: { 
+        'x-access-token': token
+      },
+    }
+    );
+  }
 
 
   function openImg() {
@@ -127,6 +141,9 @@ const Paquetes = () => {
           justifyContent: "center",
         }}
       >
+        <div>
+            <FormPaquetes userId= {userId[0]} paquete={paquete} setPaquete = {setPaquete}/>
+        </div>
         {/* TABLA DE ALIMENTOS */}
         <div style={{ marginRight: "20px" }}>
           <table
@@ -148,22 +165,23 @@ const Paquetes = () => {
             </thead>
             <tbody>
               {pacFood.arr.map((pac) => (
+                
                   <tr key={pac.id}>
                     <td style = {{ top: 0, textAlign: "center" }}>{pac.foodName}</td>
                     <td style = {{ top: 0, textAlign: "center" }}>{pac.measure}</td>
                     <td style = {{ top: 0, textAlign: "center" }}>{pac.quantity}</td>
                     <td>
-                      <button type="button">
-                        <img
-                          src="assets/pencil.png"
-                          alt=""
-                          width="30px"
-                          height="30px"
-                        />
-                      </button>
+                        <button type="button">
+                          <img
+                            src="assets/pencil.png"
+                            alt=""
+                            width="30px"
+                            height="30px"
+                          />
+                        </button>
                     </td>
                     <td>
-                      <button type="button">
+                      <button type="button" onClick={() => handleDelete(paquetes[0].idUser)}>
                         <img
                           src="assets/trash.png"
                           alt=""
@@ -221,10 +239,7 @@ const Paquetes = () => {
             </tbody>
           </table>
         </div>
-        {/*FORM PARA ACTUALIZAR Y CREAR NUEVO PAQUETE*/}
-        <div>
-            <FormPaquetes/>
-        </div>
+        {/*FORM PARA ACTUALIZAR Y CREAR NUEVO PAQUETE*/} 
       </div>
     </>
   );

@@ -18,6 +18,7 @@ import Ubicacion from './pages/ubicacion';
 import Miembros from './pages/miembros';
 import Respuestas from './pages/respuestas';
 import Folio from './pages/DB/FormFolio';
+import FormPaquetesEditar from "./pages/DB/FormPaquetesEditar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
 import { TokenContext } from './TokenContext';
@@ -56,6 +57,7 @@ function App() {
               <Route path="/questionF" element={<QuestionF />}></Route>
               <Route path="/questionT" element={<QuestionT />}></Route>
               <Route path="/folio" element={<Folio />}></Route>
+              <Route path="/editarPaquetes" element={<FormPaquetesEditar />}></Route>
               <Route path="*" element={<Navigate to="/" />}></Route>
             </>
             }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useToken } from "../TokenContext";
 import jwt from "jwt-decode";
 import "./paquetes.css";
@@ -7,6 +7,7 @@ import PieChart from "../components/PieChart";
 import { Doughnut } from "react-chartjs-2";
 import { UserData } from "../components/Data";
 import FormPaquetes from "./DB/FormPaquetes";
+import FormPaquetesEditar from "./DB/FormPaquetesEditar";
 
 const StatChart = ({ dataA, dataB, title }) => (
   <div style={{ width: "100px", height: "100px" }}>
@@ -42,6 +43,7 @@ const Paquetes = () => {
 
   const [paquetes, setPaquetes] = useState({ idFood: 0 });
   const [food, setFood] = useState({ foodName: "" });
+  const [paquete, setPaquete] = useState({alimento: "", cantidad: 0});
 
   useEffect(() => {
     getPaquetesById();
@@ -91,6 +93,7 @@ const Paquetes = () => {
       for (var j = 0; j < food.length; j++) {
         if (food[j].id === paquetes[i].idFood) {
           food[j].quantity = paquetes[i].quantity;
+          food[j].id = paquetes[i].id;
           arr.push(food[j]);
 
           lipidos += food[j].lipidos * paquetes[i].quantity;
@@ -100,9 +103,6 @@ const Paquetes = () => {
         }
       }
     }
-
-  
-
     return {
       arr,
       lipidos,
@@ -110,6 +110,7 @@ const Paquetes = () => {
       prots,
     };
   }, [paquetes, food]);
+
 
   const handleDelete = async id => {
     const response = await fetch(`${api}/package/${id}`,
@@ -141,7 +142,7 @@ const Paquetes = () => {
         }}
       >
         <div>
-            <FormPaquetes/>
+            <FormPaquetes userId= {userId[0]} paquete={paquete} setPaquete = {setPaquete}/>
         </div>
         {/* TABLA DE ALIMENTOS */}
         <div style={{ marginRight: "20px" }}>
@@ -164,19 +165,20 @@ const Paquetes = () => {
             </thead>
             <tbody>
               {pacFood.arr.map((pac) => (
+                
                   <tr key={pac.id}>
                     <td style = {{ top: 0, textAlign: "center" }}>{pac.foodName}</td>
                     <td style = {{ top: 0, textAlign: "center" }}>{pac.measure}</td>
                     <td style = {{ top: 0, textAlign: "center" }}>{pac.quantity}</td>
                     <td>
-                      <button type="button">
-                        <img
-                          src="assets/pencil.png"
-                          alt=""
-                          width="30px"
-                          height="30px"
-                        />
-                      </button>
+                        <button type="button">
+                          <img
+                            src="assets/pencil.png"
+                            alt=""
+                            width="30px"
+                            height="30px"
+                          />
+                        </button>
                     </td>
                     <td>
                       <button type="button" onClick={() => handleDelete(paquetes[0].idUser)}>

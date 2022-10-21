@@ -11,7 +11,7 @@ const FormWhite = () => {
   const form = useRef();
   const navigate = useNavigate();
   const { token } = useToken();
-  const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
+  const api = "https://osdup4mgd8.execute-api.us-east-1.amazonaws.com/proxy1/api"
 
   const [whiteList, setWhitelist] = useState({ adminName: "" });
 
@@ -47,8 +47,6 @@ const FormWhite = () => {
     e.preventDefault();
     const formData = new FormData(form.current)
 
-    const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
-
     const response = await fetch(`${api}/whiteList`,
       { method: 'POST', body: formData }
     );
@@ -59,8 +57,6 @@ const FormWhite = () => {
   const handleSubmit2 = async (e) => {
     e.preventDefault();
     const formData = new FormData(form.current)
-
-    const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
 
     const response = await fetch(`${api}/whiteList/${formData.get('eMail')}`,
       { method: 'DELETE' }

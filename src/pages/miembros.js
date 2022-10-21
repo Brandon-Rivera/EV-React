@@ -9,7 +9,7 @@ const Miembros = () => {
     const location = useLocation();
     const userId = location.state;
 
-    const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api";
+    const api = "https://osdup4mgd8.execute-api.us-east-1.amazonaws.com/proxy1/api"
 
     const [miembros, setMiembros] = useState({ isLeader: "0" });
     const { token } = useToken();

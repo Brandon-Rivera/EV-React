@@ -13,7 +13,7 @@ const FormQuestion = () => {
   const navigate = useNavigate();
   const form1 = useRef(null);
   const { token } = useToken();
-  const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
+  const api = "https://osdup4mgd8.execute-api.us-east-1.amazonaws.com/proxy1/api"
 
   const [section, setSection] = useState("Tipo de pregunta");
   const [option, setOption] = useState("")

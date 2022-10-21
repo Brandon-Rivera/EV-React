@@ -47,8 +47,6 @@ const Navbar = () => {
                                         navigate("/whitelist"); break;
                                     case 'Folio':
                                         navigate("/folio"); break;
-                                    case 'Paquete2':
-                                        navigate("/Paquete2"); break;
                                     default:
                                         break;
                                 }

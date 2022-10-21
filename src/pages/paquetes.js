@@ -47,7 +47,7 @@ const Paquetes = () => {
 
   useEffect(() => {
     getPaquetesById();
-  }, []);
+  }, [paquetes]);
 
   useEffect(() => {
     getFood();

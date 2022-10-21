@@ -21,7 +21,6 @@ const FormWhite = () => {
 
   const getWhitelist = async () => {
     const id = jwt(token).id
-    // `${api}/administrador/${id}`
     const response = await fetch(`${api}/whitelist`, {
       headers: {
         'x-access-token': token

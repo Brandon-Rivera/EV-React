@@ -15,7 +15,7 @@ const Navbar = () => {
     const handleLogout = () => setToken(null);
 
     const options = [
-        'Food', 'Questions', 'Whitelist', 'Folio'
+        'Food', 'Questions', 'Whitelist', 'Folio', 'Paquete2'
     ];
 
     return (
@@ -47,6 +47,8 @@ const Navbar = () => {
                                         navigate("/whitelist"); break;
                                     case 'Folio':
                                         navigate("/folio"); break;
+                                    case 'Paquete2':
+                                        navigate("/Paquete2"); break;
                                     default:
                                         break;
                                 }

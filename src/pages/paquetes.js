@@ -37,7 +37,7 @@ const StatChart = ({ dataA, dataB, title }) => (
 const Paquetes = () => {
   const location = useLocation();
   const userId = location.state;
-  const api = "https://osdup4mgd8.execute-api.us-east-1.amazonaws.com/proxy1/api"
+  const api = "http://api-vacaciones.us-east-1.elasticbeanstalk.com/api"
   const { token } = useToken();
 
   const [paquetes, setPaquetes] = useState({ idFood: 0 });
